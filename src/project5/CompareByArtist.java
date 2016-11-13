@@ -2,7 +2,7 @@ package project5;
 
 import java.util.Comparator;
 
-public class CompareByArtist implements Comparator{
+public class CompareByArtist implements Comparator<Object>{
 
 	public int compare(Object o1, Object o2) {
 		Song song1 = (Song) o1;

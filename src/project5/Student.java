@@ -53,10 +53,6 @@ public class Student {
         return region;
     }
     
-    public HashMap<String, Boolean> getSongInfo() {
-        return this.songInfo;
-    }
-    
     /**
      * Adds the song to the list of songs the student has heard
      * @param song The song the student heard
