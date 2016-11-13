@@ -1,50 +1,53 @@
 package project5;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+
+import list.ListInterface;
 
 /**
  * 
- * @author Phillip
+ * @author Phillip Hrinko
+ * @version 2016.11.10
  * @param <E>
  */
-public class LinkedList<E> implements List<E> {
-    
+public class LinkedList<E> implements ListInterface<E> {
+
     private static class Node<E> {
         private Node<E> next;
         private Node<E> previous;
         private E data;
-        
+
         public Node(E data) {
             this.data = data;
         }
-        
+
         public void setNext(Node<E> nextNode) {
             next = nextNode;
         }
-        
+
         public void setPrevious(Node<E> lastNode) {
             previous = lastNode;
         }
-        
+
         public Node<E> next() {
             return next;
         }
-        
+
         public Node<E> previous() {
             return previous;
         }
-        
+
         public E getData() {
             return data;
         }
     }
-    
+
     private Node<E> head;
     private Node<E> tail;
     private int size;
-    
+
+    /**
+     * This constructor instantiates a head and tail sentinel node
+     * and sets the size to be 0.
+     */
     public LinkedList() {
         head = new LinkedList.Node<E>(null);
         tail = new LinkedList.Node<E>(null);
@@ -53,13 +56,24 @@ public class LinkedList<E> implements List<E> {
         size = 0;
     }
 
-    @Override
-    public boolean add(E anEntry) {
+    /**
+     * Adds the element at the end of the linked list.
+     * @param anEntry the element to be added to the list
+     * @return True if it was added.
+     * @throws IllegalArgumentException if anEntry is null.
+     */
+    public void add(E anEntry) {
         add(size, anEntry);
-        return true; 
     }
 
-    @Override
+    /**
+     * Adds the element at the specified index in the list.
+     * @param index the index in which the entry should be added to.
+     * @param anEntry the element to be added to the list.
+     * @throws IndexOutOfBoundsException if the index is greater than the size
+     *          or the index if negative
+     * @throws IllegalArgumentException if anEntry is null.
+     */
     public void add(int index, E anEntry) {
         if (index < 0 || size < index) {
             throw new IndexOutOfBoundsException();
@@ -80,15 +94,15 @@ public class LinkedList<E> implements List<E> {
         nodeAfter.setPrevious(newNode);
         size++;
     }
-    
+
     /**
-     * gets the node at that index
+     * Gets the node at that index
      * 
-     * @param index
-     * @return node at index
+     * @param index the index in the list
+     * @return node at that index
      */
     private Node<E> getNodeAtIndex(int index) {
-        if (index < 0 || size() <= index) {
+        if (index < 0 || size <= index) {
             throw new IndexOutOfBoundsException("No element exists at " + index);
         }
         Node<E> current = head.next(); // as we have a sentinel node
@@ -98,14 +112,25 @@ public class LinkedList<E> implements List<E> {
         return current;
     }
 
+    /**
+     * Removes the Node at the specified index and returns its data.
+     * @param index The index where the Node should be removed
+     * @return E the data stored in the Node.
+     * @throws IndexOutOfBoundsException if the index is negative
+     *          or greater or equal to the size.
+     */
     @Override
-    public boolean addAll(Collection<? extends E> arg0) {
-        // TODO Auto-generated method stub
-        return false;
+    public E remove(int index) {
+        Node<E> nodeToBeRemoved = getNodeAtIndex(index);
+        nodeToBeRemoved.previous().setNext(nodeToBeRemoved.next());
+        nodeToBeRemoved.next().setPrevious(nodeToBeRemoved.previous());
+        size--;
+        return nodeToBeRemoved.getData();
     }
 
-    
-
+    /**
+     * Clears the list of all entries.
+     */
     @Override
     public void clear() {
         head = new LinkedList.Node<E>(null);
@@ -115,30 +140,14 @@ public class LinkedList<E> implements List<E> {
         size = 0;
     }
 
-    @Override
-    public boolean contains(Object obj) {
-        if (isEmpty()) {
-            return false;
-        }
-        Node<E> current = head.next();
-        while (current != tail) {
-            if (obj.equals(current.getData())) {
-                return true;
-            }
-            current = current.next();
-        }
-        return false;
-    }
-
-    @Override
-    public boolean containsAll(Collection<?> c) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public E get(int index) {
-        if (isEmpty() || index > size) {
+    /**
+     * Gets the data stored in the Node at the specified index
+     * @param index The index in the list 
+     * @return E the data stored in the Node, or null if the list 
+     *          is empty or the index is greater than the size.
+     */
+    public E getEntry(int index) {
+        if (index < 0 || index >= size) {
             return null;
         }
         Node<E> current = head.next();
@@ -154,87 +163,58 @@ public class LinkedList<E> implements List<E> {
         }
         // check if the data was null;
         if (data == null) {
-            throw new IndexOutOfBoundsException("Index exceeds the size.");
+            throw new IndexOutOfBoundsException(); 
         }
         return data;
     }
 
+    /**
+     * Checks the list to see if it contains the object 
+     * in the parameter. 
+     * @param obj the Object you are looking for in the list.
+     * @return True if the list contains the object
+     */
     @Override
-    public int indexOf(Object o) {
-        // TODO Auto-generated method stub
-        return 0;
+    public boolean contains(Object obj) {
+        if (isEmpty()) {
+            return false;
+        }
+        Node<E> current = head.next();
+        while (current != tail) {
+            if (obj.equals(current.getData())) {
+                return true;
+            }
+            current = current.next();
+        }
+        return false;
     }
 
+    /**
+     * @return True if the size of the list is zero.
+     */
     @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
+    /**
+     * @return the length of the list.
+     */
     @Override
-    public Iterator<E> iterator() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public int lastIndexOf(Object o) {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public ListIterator<E> listIterator() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public ListIterator<E> listIterator(int index) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public boolean remove(Object o) {
-        return false;
-    }
-
-    @Override
-    public E remove(int index) {
-        Node<E> nodeToBeRemoved = getNodeAtIndex(index);
-        nodeToBeRemoved.previous().setNext(nodeToBeRemoved.next());
-        nodeToBeRemoved.next().setPrevious(nodeToBeRemoved.previous());
-        size--;
-        return nodeToBeRemoved.getData();
-    }
-
-    @Override
-    public boolean removeAll(Collection<?> c) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean retainAll(Collection<?> c) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public E set(int index, E element) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public int size() {
+    public int getLength() {
         return size;
     }
 
+    /**
+     * Replaces the Nodes data at the specified index to be the
+     * data in the parameter.
+     */
     @Override
-    public List<E> subList(int fromIndex, int toIndex) {
-        // TODO Auto-generated method stub
-        return null;
+    public E replace(int index, E anEntry) {
+        Node<E> nodeToBeChanged = getNodeAtIndex(index);
+        E replacedData = nodeToBeChanged.getData();
+        nodeToBeChanged.data = anEntry;
+        return replacedData;
     }
 
     @Override
@@ -242,17 +222,4 @@ public class LinkedList<E> implements List<E> {
         // TODO Auto-generated method stub
         return null;
     }
-
-    @Override
-    public <T> T[] toArray(T[] a) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public boolean addAll(int index, Collection<? extends E> c) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
 }
