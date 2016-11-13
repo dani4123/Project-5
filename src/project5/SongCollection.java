@@ -22,7 +22,7 @@ public class SongCollection {
 	 */
 	public boolean nextNineSongs()
 	{
-		if (position + 9 < songList.size())
+		if (position + 9 < songList.getLength())
 		{
 			position += 9;
 			return true;
@@ -85,7 +85,7 @@ public class SongCollection {
 			break;
 		}
 		
-		sort(0, songList.size() - 1, comparator);
+		sort(0, songList.getLength() - 1, comparator);
 	}
 	
 	/**
@@ -108,11 +108,11 @@ public class SongCollection {
 	
 	public void insertInOrder(int entryIndex, int begin, int end, Comparator comp)
 	{
-		if (comp.compare(songList.get(entryIndex), songList.get(end)) < 0)
+		if (comp.compare(songList.getEntry(entryIndex), songList.getEntry(end)) < 0)
 		{
-			Song currentSong = songList.get(entryIndex);
-			songList.set(end + 1, songList.get(end));
-			songList.set(end, currentSong);
+			Song currentSong = songList.getEntry(entryIndex);
+			songList.replace(end + 1, songList.getEntry(end));
+			songList.replace(end, currentSong);
 			insertInOrder(end, begin, end - 1, comp);
 		}
 	}
@@ -120,15 +120,20 @@ public class SongCollection {
 	public Song[] getNineSongsToShow()
 	{
 		int end = position + 9;
-		if (end > songList.size())
+		if (end > songList.getLength())
 		{
-			end = songList.size();
+			end = songList.getLength();
 		}
 		Song[] returnList = new Song[end - position];
-		for (int i = position ; i < songList.size() ; i++)
+		for (int i = position ; i < songList.getLength() ; i++)
 		{
-			returnList[i] = songList.get(i);
+			returnList[i] = songList.getEntry(i);
 		}
 		return returnList;
+	}
+	
+	public int getSize()
+	{
+	    return songList.getLength();
 	}
 }

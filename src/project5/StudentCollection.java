@@ -132,4 +132,9 @@ public class StudentCollection {
 		
 		return returnArray;
 	}
+	
+	public int getSize()
+	{
+	    return studentList.getLength();
+	}
 }
