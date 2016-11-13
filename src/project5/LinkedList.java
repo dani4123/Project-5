@@ -1,15 +1,16 @@
 package project5;
-
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import list.ListInterface;
 
 /**
- * 
+ *  
  * @author Phillip Hrinko
  * @version 2016.11.10
- * @param <E>
+ * @param <E> The type of data to be stored in the list.
  */
 public class LinkedList<E> implements ListInterface<E> {
-
+    
     private static class Node<E> {
         private Node<E> next;
         private Node<E> previous;
@@ -43,21 +44,19 @@ public class LinkedList<E> implements ListInterface<E> {
     private Node<E> head;
     private Node<E> tail;
     private int size;
-
     /**
      * This constructor instantiates a head and tail sentinel node
      * and sets the size to be 0.
      */
     public LinkedList() {
-        head = new LinkedList.Node<E>(null);
-        tail = new LinkedList.Node<E>(null);
+        head = new Node<E>(null);
+        tail = new Node<E>(null);
         head.setNext(tail);
         tail.setPrevious(head);
         size = 0;
     }
 
-    /**
-     * Adds the element at the end of the linked list.
+     /** Adds the element at the end of the linked list.
      * @param anEntry the element to be added to the list
      * @return True if it was added.
      * @throws IllegalArgumentException if anEntry is null.
@@ -111,7 +110,7 @@ public class LinkedList<E> implements ListInterface<E> {
         }
         return current;
     }
-
+    
     /**
      * Removes the Node at the specified index and returns its data.
      * @param index The index where the Node should be removed
@@ -127,19 +126,17 @@ public class LinkedList<E> implements ListInterface<E> {
         size--;
         return nodeToBeRemoved.getData();
     }
-
     /**
      * Clears the list of all entries.
      */
     @Override
     public void clear() {
-        head = new LinkedList.Node<E>(null);
-        tail = new LinkedList.Node<E>(null);
+        head = new Node<E>(null);
+        tail = new Node<E>(null);
         head.setNext(tail);
         tail.setPrevious(head);
         size = 0;
     }
-
     /**
      * Gets the data stored in the Node at the specified index
      * @param index The index in the list 
@@ -190,14 +187,17 @@ public class LinkedList<E> implements ListInterface<E> {
     }
 
     /**
+     * Sees whether this list is empty
+     * @return True if the size of the list is zero, false if not
      * @return True if the size of the list is zero.
      */
     @Override
     public boolean isEmpty() {
         return size == 0;
     }
-
     /**
+     * Gets the length of this list.
+     * @return the integer number of entries currently in the list
      * @return the length of the list.
      */
     @Override
@@ -206,20 +206,69 @@ public class LinkedList<E> implements ListInterface<E> {
     }
 
     /**
-     * Replaces the Nodes data at the specified index to be the
-     * data in the parameter.
+     * Replaces the entry at the specified position in this list.
+     * @param index The index that specifies the position of the 
+     *          entry to be replaced.
+     * @param newEntry The object that will replace the entry at the 
+     *                  specified position.
+     * @return E the old data that was replaced
      */
     @Override
-    public E replace(int index, E anEntry) {
+    public E replace(int index, E newEntry) {
         Node<E> nodeToBeChanged = getNodeAtIndex(index);
         E replacedData = nodeToBeChanged.getData();
-        nodeToBeChanged.data = anEntry;
+        nodeToBeChanged.data = newEntry;
         return replacedData;
     }
 
     @Override
     public Object[] toArray() {
-        // TODO Auto-generated method stub
         return null;
+    }
+    /**
+     * A new iterator that iterates through the LinkedList
+     * @return a iterator object
+     */
+    public Iterator<E> iterator() {
+        return new LinkedListIterator<E>();
+    }
+    
+    @SuppressWarnings("hiding")
+    private class LinkedListIterator<E> implements Iterator<E> {
+        
+        private Node<E> currentNode;
+
+        /**
+         * Initializes the currentNode to the head sentinel node.
+         */
+        @SuppressWarnings("unchecked")
+        public LinkedListIterator() {
+            currentNode = (Node<E>) head;
+        }
+
+        /**
+         * Checks if there are more elements in the list.
+         * @return true if there are more elements in the list
+         */
+        @Override
+        public boolean hasNext() {
+            return currentNode.next() != tail;
+        }
+
+        /**
+         * Gets the next value in the list
+         * @return the next value
+         * @throws NoSuchElementException if there are no nodes left in the list.
+         */
+        @Override
+        public E next() {
+            if (hasNext()) {
+                currentNode = currentNode.next();
+                return currentNode.getData();
+            } 
+            else {
+                throw new NoSuchElementException("if there are " + "no nodes left in the list");
+            }
+        }
     }
 }
