@@ -2,6 +2,12 @@ package project5;
 
 import java.util.Comparator;
 
+/**
+ * 
+ * @author Jooyoung Whang (joo918)
+ *
+ */
+
 public class CompareByYear implements Comparator{
 
 	public int compare(Object o1, Object o2) {
