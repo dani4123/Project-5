@@ -45,7 +45,7 @@ public class StudentTest extends TestCase {
      */
     public void testAddSongHeard() {
         phil.addSongHeard("Star Boy", true);
-        assertTrue(phil.getSongInfo().containsKey("Star Boy"));
+        assertTrue(phil.hasHeard("Star Boy"));
     }
     
     /**
