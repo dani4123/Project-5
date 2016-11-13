@@ -1,6 +1,7 @@
 package project5;
 
 import CS2114.Button;
+import CS2114.Shape;
 import CS2114.Window;
 import CS2114.WindowSide;
 
@@ -21,8 +22,14 @@ public class GUIWindow {
     private SongPropertyEnum currentSongProperty;
     private RepresentationEnum currentRepresentation;
     
-    private songGraphic[] currentShown;
+    private SongGraphic[] currentShown;
     
+    /**
+     * 
+     * @author Jooyoung Whang (joo918)
+     * @param songs
+     * @param students
+     */
     public GUIWindow(SongCollection songs, StudentCollection students)
     {
         window = new Window("Music Preference Visualization");
@@ -50,8 +57,29 @@ public class GUIWindow {
         window.addButton(quitButton, WindowSide.SOUTH);
     }
     
-    private static class songGraphic
+    private class SongGraphic
     {
+        private Song song;
+        private SongPropertyEnum songInfo;
         
+        private Shape firstHeard;
+        private Shape firstLiked;
+        private Shape secondHeard;
+        private Shape secondLiked;
+        private Shape thirdHeard;
+        private Shape thirdLiked;
+        private Shape fourthHeard;
+        private Shape fourthLiked;
+        
+        public SongGraphic()
+        {
+            this(new Song("Default", "genre", "artist", 0, null),
+                    SongPropertyEnum.ARTIST);
+        }
+        
+        public SongGraphic(Song theSong, SongPropertyEnum sortedBy)
+        {
+            song = theSong;
+        }
     }
 }
