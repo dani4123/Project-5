@@ -3,6 +3,11 @@ package project5;
 import java.util.Comparator;
 import java.util.Iterator;
 
+/**
+ * 
+ * @author Jooyoung Whang (joo918)
+ *
+ */
 public class SongCollection {
 
 	private LinkedList<Song> songList;
