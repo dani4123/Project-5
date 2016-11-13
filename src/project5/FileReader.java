@@ -55,8 +55,8 @@ public class FileReader {
         String[] dataArray;
         Song song;
         String major;
-        String hobby;
         String region;
+        String hobby;
 
         scanner.nextLine();
 
@@ -64,7 +64,7 @@ public class FileReader {
         {
             //String of entire line before being split up into specific info
             String[] entireLine = scanner.nextLine().trim().split(",");
-            if (entireLine.length == (songCollection. * 2 + 4)) 
+            if (entireLine.length == (songCollection.getSize() * 2 + 4)) 
             {
                 dataArray = new String[entireLine.length + 1];
                 for (int i = 0; i < entireLine.length; i++) 
@@ -81,19 +81,16 @@ public class FileReader {
             {
                 continue;
             }
-            
             major = dataArray[2];
             region = dataArray[3];
             hobby = dataArray[4];
-            
             for (int i = 5; (i + 1) < dataArray.length; i += 2) {
-                song = songCollection.getAt((i - 5) / 2);
+                song = songCollection.getSong((i - 5) / 2);
                 song.getMajorCount().increment(major, dataArray[i], dataArray[i + 1]);
                 song.getRegionCount().increment(region, dataArray[i], dataArray[i + 1]);
                 song.getHobbyCount().increment(hobby, dataArray[i], dataArray[i + 1]);
             }
         }
-
         scanner.close();
     }
 

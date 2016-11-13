@@ -1,6 +1,7 @@
 package project5;
 
 import java.util.Comparator;
+import java.util.Iterator;
 
 public class SongCollection {
 
@@ -59,13 +60,13 @@ public class SongCollection {
 		while (iter.hasNext())
 		{
 			Song currentSong = iter.next();
-			currentSong.updateBy(rep);
+			currentSong.setStatArray(rep);
 		}
 	}
 	
 	public void sort(SongPropertyEnum prop)
 	{
-		Comparator comparator;
+		Comparator<Object> comparator;
 		switch (prop)
 		{
 		case ARTIST:
@@ -96,7 +97,7 @@ public class SongCollection {
 	 * @param last
 	 * @param comp
 	 */
-	public void sort(int first, int last, Comparator comp)
+	public void sort(int first, int last, Comparator<Object> comp)
 	{
 		if (first < last)
 		{
@@ -106,7 +107,7 @@ public class SongCollection {
 		}
 	}
 	
-	public void insertInOrder(int entryIndex, int begin, int end, Comparator comp)
+	public void insertInOrder(int entryIndex, int begin, int end, Comparator<Object> comp)
 	{
 		if (comp.compare(songList.getEntry(entryIndex), songList.getEntry(end)) < 0)
 		{
@@ -135,5 +136,10 @@ public class SongCollection {
 	public int getSize()
 	{
 	    return songList.getLength();
+	}
+	
+	public Song getSong(int index)
+	{
+	    return songList.getEntry(index);
 	}
 }

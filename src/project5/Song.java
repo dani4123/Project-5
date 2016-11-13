@@ -40,6 +40,7 @@ public class Song {
         this.artist = artist;
         this.year = year;
         this.studentCollection = studentCollection;
+        this.statArray = new int[statArraySize];
     }
     
     /**
@@ -78,13 +79,21 @@ public class Song {
         return year;
     }
     
-    public void updateBy(RepresentationEnum rEnum)
+    /**
+     * Getter method for statArray field
+     * @return statArray
+     */
+    public int[] getStatArray()
     {
-        
+        return statArray;
     }
     
-    public int reportStats()
+    /**
+     * Writes to statArray
+     * @param rEnum Which category to write for
+     */
+    public void setStatArray(RepresentationEnum rEnum)
     {
-        
+        statArray = studentCollection.heardAndLikedAccordingTo(this.title, rEnum);
     }
 }
