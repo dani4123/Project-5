@@ -86,7 +86,7 @@ public class StudentCollection extends LinkedList<Student>{
 				if (current.hasHeard(title))
 				{
 					int position = 0;
-					switch (current.getHobby())
+					switch (current.getMajor())
 					{
 					case "Computer Science":
 						returnArray[0]++;
@@ -121,7 +121,7 @@ public class StudentCollection extends LinkedList<Student>{
 				if (current.hasHeard(title))
 				{
 					int position = 0;
-					switch (current.getHobby())
+					switch (current.getRegion())
 					{
 					case "Northeast":
 						returnArray[0]++;
