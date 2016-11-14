@@ -13,7 +13,7 @@ public class Student {
     private String major;
     private String hobby;
     private String region;
-    private HashMap<String, Boolean> songInfo;
+    private HashMap<String, Boolean[]> songInfo;
     
     /**
      * The constructor for this class that takes the parameters 
@@ -26,7 +26,7 @@ public class Student {
         this.major = major;
         this.region = region;
         this.hobby = hobby;
-        songInfo = new HashMap<String, Boolean>();
+        songInfo = new HashMap<String, Boolean[]>();
     }
     
     /**
@@ -58,32 +58,32 @@ public class Student {
      * @param song The song the student heard
      * @param True if he liked the song.
      */
-    public void addSongHeard(String song, boolean liked) {
-        songInfo.put(song, liked);
+    public void addSong(String song, boolean heard, boolean liked) {
+        songInfo.put(song, new Boolean[] {heard, liked});
     }
     
     /**
      * Checks to see if a song has been heard by this Student.
-     * @param song
+     * @param song The song to be checked if the student has heard. 
      * @return True if the song was heard by the Student
      */
     public boolean hasHeard(String song) {
-        return songInfo.containsKey(song);
+        if (!songInfo.containsKey(song)) {
+            throw new IllegalArgumentException();
+        }
+        return songInfo.get(song)[0];
     }
     
     /**
      * Checks to see if a song was liked by the Student
      * @param song The song to be checked if the student likes.
      * @return True if the Student likes the song
-     * @throws IllegalArgumentException if the song has not been heard.
      */
     public boolean doesLike(String song) {
-        if (hasHeard(song)) {
-            return songInfo.get(song);
+        if (!songInfo.containsKey(song)) {
+            throw new IllegalArgumentException();
         }
-        else {
-            throw new IllegalArgumentException("has not heard song");
-        }
+        return songInfo.get(song)[1];
     }
 }
 

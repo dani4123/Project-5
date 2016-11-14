@@ -26,15 +26,15 @@ public class StudentCollectionTest extends TestCase {
     public void setUp() {
         collection = new StudentCollection();
         student1 = new Student("Computer Science", "Northeast", "reading");
-        student1.addSongHeard("Work", true);
+        student1.addSong("Work", true, true);
         student2 = new Student("Other Engineering", "Southeast", "art");
-        student2.addSongHeard("Work", false);
+        student2.addSong("Work", false, false);
         student3 = new Student("Math or CMDA", "United States (other than Southeast or Northwest)", "sports");
-        student3.addSongHeard("Work", true);
+        student3.addSong("Work", true, true);
         student4 = new Student("Other", "Outside of United States", "music");
-        student4.addSongHeard("Work", false);
+        student4.addSong("Work", false, false);
         student5 = new Student("Other", "Northeast", "music");
-        student5.addSongHeard("Views", true);
+        student5.addSong("Views", true, true);
         collection.add(student1);
         collection.add(student2);
         collection.add(student3);
