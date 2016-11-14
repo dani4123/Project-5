@@ -140,7 +140,26 @@ public class SongCollectionTest extends TestCase {
         assertEquals(collection.getEntry(24).getTitle(), "Song25");
     }
 
+    /**
+     * tests getting nine songs when connecting to the front end.
+     * when near the end, where there is a possibility that there
+     * might be less than nine songs left, just give the rest.
+     */
     public void testGetNineSongsToShow() {
         Song[] songs = collection.getNineSongsToShow();
+        assertEquals(startSong, songs[0]);
+        assertEquals(9, songs.length);
+        for (int i = 0 ; i < 8 ; i++)
+        {
+            assertEquals("Song" + (i + 1), songs[i + 1].getTitle());
+        }
+        for (int i = 0; i < 5; i++) {
+            song = new Song("Song" + i, "Various", Integer.toString(i) , "Random", null);
+            collection.add(song);
+        }
+        collection.nextNineSongs();
+        collection.nextNineSongs();
+        collection.nextNineSongs();
+        assertEquals(5, collection.getNineSongsToShow().length);
     }
 }

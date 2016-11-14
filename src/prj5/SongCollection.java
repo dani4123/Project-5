@@ -136,9 +136,9 @@ public class SongCollection extends LinkedList<Song>{
             end = getLength();
         }
         Song[] returnList = new Song[end - position];
-        for (int i = position ; i < getLength() ; i++)
+        for (int i = position ; i < end ; i++)
         {
-            returnList[i] = getEntry(i);
+            returnList[i - position] = getEntry(i);
         }
         return returnList;
     }
