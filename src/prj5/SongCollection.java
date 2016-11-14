@@ -118,7 +118,7 @@ public class SongCollection extends LinkedList<Song>{
 			break;
 		}
 		
-		super.sort(0, getLength() - 1, comparator);
+		super.sort(comparator);
 	}
 	
 	/**
