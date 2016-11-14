@@ -154,7 +154,7 @@ public class SongCollectionTest extends TestCase {
             assertEquals("Song" + (i + 1), songs[i + 1].getTitle());
         }
         for (int i = 0; i < 5; i++) {
-            song = new Song("Song" + i, "Various", Integer.toString(i) , "Random", null);
+            Song song = new Song("Song" + i, "Various", Integer.toString(i) , "Random", null);
             collection.add(song);
         }
         collection.nextNineSongs();
