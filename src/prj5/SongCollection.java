@@ -1,4 +1,4 @@
-package project5;
+package prj5;
 
 import java.util.Comparator;
 import java.util.Iterator;

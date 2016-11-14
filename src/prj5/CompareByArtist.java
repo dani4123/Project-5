@@ -1,4 +1,4 @@
-package project5;
+package prj5;
 
 import java.util.Comparator;
 
@@ -9,13 +9,12 @@ import java.util.Comparator;
  * 
  */
 
-public class CompareByTitle implements Comparator<Object>
-{
+public class CompareByArtist implements Comparator<Object>{
 
 	public int compare(Object o1, Object o2) {
 		Song song1 = (Song) o1;
 		Song song2 = (Song) o2;
-		return song1.getTitle().compareTo(song2.getTitle());
+		return song1.getArtist().compareTo(song2.getArtist());
 	}
 
 }

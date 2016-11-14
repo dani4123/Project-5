@@ -1,4 +1,4 @@
-package project5;
+package prj5;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -281,7 +281,7 @@ public class LinkedList<E> implements ListInterface<E> {
      * @param last     last index
      * @param comp     the comparator used
      */
-    public void sort(int first, int last, Comparator comp)
+    public void sort(int first, int last, Comparator<Object> comp)
     {
         if (first < last)
         {
@@ -302,7 +302,7 @@ public class LinkedList<E> implements ListInterface<E> {
      * @param end      right before entry's current index
      * @param comp     comparator used to compare elements
      */
-    public void insertInOrder(int entryIndex, int begin, int end, Comparator comp)
+    public void insertInOrder(int entryIndex, int begin, int end, Comparator<Object> comp)
     {
         if (comp.compare(getEntry(entryIndex), getEntry(end)) < 0)
         {
