@@ -34,8 +34,8 @@ public class GUIWindow {
     {
         window = new Window("Music Preference Visualization");
         quitButton = new Button("Quit");
-        nextButton = new Button("Next ¡æ");
-        previousButton = new Button("¡ç Prev");
+        nextButton = new Button("Next ï¿½ï¿½");
+        previousButton = new Button("ï¿½ï¿½ Prev");
         sortByArtist = new Button("Sort By Artist Name");
         sortByTitle = new Button("Sort By Song Title");
         sortByDate = new Button("Sort By Release Year");
@@ -74,7 +74,7 @@ public class GUIWindow {
         
         public SongGraphic()
         {
-            this(new Song("Default", "genre", "artist", 0, null),
+            this(new Song("Default", "genre", "artist", "0", null),
                     SongPropertyEnum.ARTIST);
         }
         
@@ -82,8 +82,6 @@ public class GUIWindow {
         {
             song = theSong;
             songInfo = sortedBy;
-            
-            
         }
     }
 }

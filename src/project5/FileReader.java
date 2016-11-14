@@ -37,7 +37,6 @@ public class FileReader {
         this.studentCollection = new StudentCollection();
         readInSongList(songList);
         readInStudentData(studentData);
-        new GUIWindow(this.songCollection, this.studentCollection);
     }
 
     /**
