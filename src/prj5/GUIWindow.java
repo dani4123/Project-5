@@ -41,7 +41,7 @@ public class GUIWindow {
      * @param songs 
      * @param students
      */
-    public GUIWindow(FileReader filereader)
+    public GUIWindow(Input filereader)
     {
         if (filereader != null)
         {
