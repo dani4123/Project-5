@@ -44,9 +44,9 @@ public class StudentTest extends TestCase {
      * all the song information.
      */
     public void testAddSong() {
-        phil.addSong("Star Boy", true, true);
-        assertTrue(phil.hasHeard("Star Boy"));
-        assertTrue(phil.doesLike("Star Boy"));
+        phil.addSong("Star Boy", 0, 0);
+        assertEquals(phil.getResponseHeard("Star Boy"), 0);
+        assertEquals(phil.getResponseLiked("Star Boy"), 0);
     }
     
     /**
@@ -54,20 +54,13 @@ public class StudentTest extends TestCase {
      * has heard and false if not. Also tests than an exception is thrown
      * if the survey did not contain the song that was called for hasHeard()
      */
-    public void testHasHeard() {
-        phil.addSong("Cinderalla", true, true);
-        phil.addSong("goosebumps", false, true);
-        assertTrue(phil.hasHeard("Cinderalla"));
-        assertFalse(phil.hasHeard("goosebumps"));
-        Exception exception = null;
-        try {
-            phil.hasHeard("Star Boy");
-        }
-        catch (Exception e) {
-            exception = e;
-        }
-        assertNotNull(exception);
-        assertTrue(exception instanceof IllegalArgumentException);
+    public void testGetHeardResponse() {
+        phil.addSong("Cinderella", 0, 0);
+        phil.addSong("goosebumps", 1, 0);
+        phil.addSong("Waves", 2, 2);
+        assertEquals(phil.getResponseHeard("Cinderella"), 0);
+        assertEquals(phil.getResponseHeard("goosebumps"), 1);
+        assertEquals(phil.getResponseHeard("Waves"), 2);
     }
     
     
@@ -76,19 +69,12 @@ public class StudentTest extends TestCase {
      * false if he does not like a song, and an exception if the
      * survey did not contain the song.
      */
-    public void testDoesLike() {
-        phil.addSong("wonderful", true, false);
-        phil.addSong("Time", true, true);
-        assertTrue(phil.doesLike("Time"));
-        assertFalse(phil.doesLike("wonderful"));
-        Exception exception = null;
-        try {
-            phil.doesLike("Black Beatles");
-        }
-        catch (Exception e) {
-            exception = e;
-        }
-        assertNotNull(exception);
-        assertTrue(exception instanceof IllegalArgumentException);
+    public void testGetLikedResponse() {
+        phil.addSong("wonderful", 0, 1);
+        phil.addSong("Time", 0, 0);
+        phil.addSong("Wolves", 2, 2);
+        assertEquals(phil.getResponseLiked("Time"), 0);
+        assertEquals(phil.getResponseLiked("wonderful"), 1);
+        assertEquals(phil.getResponseLiked("Wolves"), 2);
     }
 }
