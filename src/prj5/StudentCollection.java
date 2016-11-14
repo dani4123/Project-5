@@ -3,17 +3,14 @@ package prj5;
 import java.util.Iterator;
 
 /**
- * 
  * stores the poll data by storing
  * each student and their poll information
  * 
  * @author Jooyoung Whang (joo918)
  * @version (2016.11.13)
- *
  */
 public class StudentCollection extends LinkedList<Student>
 {
-	
     /**
      * iterates through the
      * studentCollection in order to
@@ -24,14 +21,19 @@ public class StudentCollection extends LinkedList<Student>
      * (Hobby, Major, Region)
      * returns an integer array
      * with each index containing:
-     * 0 - 1st category heard
-     * 1 - 1st category liked
-     * 2 - 2nd category heard
-     * 3 - 2nd category liked
-     * 4 - 3rd category heard
-     * 5 - 3rd category liked
-     * 6 - 4th category heard
-     * 7 - 5th category liked
+     * 
+     * 0 - 1st category student total
+     * 1 - 1st category heard
+     * 2 - 1st category liked
+     * 3 - 2nd category student total
+     * 4 - 2nd category heard
+     * 5 - 2nd category liked
+     * 6 - 3rd category student total
+     * 7 - 3rd category heard
+     * 8 - 3rd category liked
+     * 9 - 4th category student total 
+     * 10 - 4th category heard
+     * 11 - 4th category liked
      * 
      * @param title song's title
      * @param rep representation type
@@ -166,7 +168,6 @@ public class StudentCollection extends LinkedList<Student>
             }
 			break;
 		}
-		
 		return returnArray;
 	}
 }

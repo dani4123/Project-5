@@ -5,7 +5,10 @@ import java.util.NoSuchElementException;
 import list.ListInterface;
 
 /**
- *  
+ *  This is a doubly linked list with a head and tail sentinel node
+ *  implementation. This data structure has adding, removing,
+ *  replacing and clearing methods as well as an inner iterator
+ *  class. 
  * @author Phillip Hrinko
  * @version 2016.11.10
  * @param <E> The type of data to be stored in the list.

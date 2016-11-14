@@ -1,14 +1,12 @@
-/**
- * 
- */
 package prj5;
 
 import student.TestCase;
 /**
- * @author JulianNguyen
+ * @author JulianNguyen, Phillip Hrinko
  * @version 11.13.16
  * 
- * Tests the Song class
+ * Tests the Song class to ensure all its public methods are 
+ * functioning correctly
  */
 public class SongTest extends TestCase {
 
@@ -18,7 +16,6 @@ public class SongTest extends TestCase {
     private Student student2;
     private Student student3;
     private Student student4;
-    private Student student5;
 
     /**
      * Called upon before every test method is called.
@@ -27,27 +24,24 @@ public class SongTest extends TestCase {
     {
         collection = new StudentCollection();
         student1 = new Student("Computer Science", "Northeast", "reading");
-        student1.addSongHeard("Work", true);
+        student1.addSong("Work", true, true);
         student2 = new Student("Other Engineering", "Southeast", "art");
-        student2.addSongHeard("Work", false);
+        student2.addSong("Work", false, false);
         student3 = new Student("Math or CMDA", "United States (other than Southeast or Northwest)", "sports");
-        student3.addSongHeard("Work", true);
+        student3.addSong("Work", true, true);
         student4 = new Student("Other", "Outside of United States", "music");
-        student4.addSongHeard("Work", false);
-        student5 = new Student("Other", "Northeast", "music");
-        student5.addSongHeard("Views", true);
+        student4.addSong("Work", false, false);
         collection.add(student1);
         collection.add(student2);
         collection.add(student3);
         collection.add(student4);
-        collection.add(student5);
         song1 = new Song("Work", "The Killers", 
                 "2005", "alternative", collection);
-        
     }
 
     /**
-     * Tests the getTitle method
+     * Tests the getTitle method to make sure the correct 
+     * title is returned.
      */
     public void testGetTitle()
     {
@@ -55,7 +49,8 @@ public class SongTest extends TestCase {
     }
     
     /**
-     * Tests the getGenre method
+     * Tests the getGenre method to make sure the correct
+     * genre is returned.
      */
     public void testGetGenre()
     {
@@ -63,7 +58,8 @@ public class SongTest extends TestCase {
     }
     
     /**
-     * Tests the getArtist method
+     * Tests the getArtist method to make sure the correct 
+     * artist is returned.
      */
     public void testGetArtist()
     {
@@ -71,7 +67,8 @@ public class SongTest extends TestCase {
     }
     
     /**
-     * Tests the getYear method
+     * Tests the getYear method to make sure the correct 
+     * year is returned.
      */
     public void testGetYear()
     {
@@ -83,7 +80,7 @@ public class SongTest extends TestCase {
      */
     public void testGetStatArray()
     {
-        assertEquals(8, song1.getStatArray().length);
+        assertEquals(12, song1.getStatArray().length);
     }
     
     /**
@@ -91,9 +88,9 @@ public class SongTest extends TestCase {
      */
     public void testSetStatArray()
     {
-        int[] expectedHobby = {1, 1, 1, 0, 1, 1, 1, 0};
+        int[] expectedHobby = {1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0};
         song1.setStatArray(RepresentationEnum.HOBBY);
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 12; i++) {
             assertEquals(expectedHobby[i], song1.getStatArray()[i]);
         }
     }
