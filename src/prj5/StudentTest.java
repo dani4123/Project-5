@@ -44,30 +44,40 @@ public class StudentTest extends TestCase {
      * all the song information.
      */
     public void testAddSongHeard() {
-        phil.addSongHeard("Star Boy", true);
+        phil.addSong("Star Boy", true, true);
         assertTrue(phil.hasHeard("Star Boy"));
     }
     
     /**
      * Tests that hasHeard() returns true for songs that the student
-     * has heard and false if not.
+     * has heard and false if not. Also tests than an exception is thrown
+     * if the survey did not contain the song that was called for hasHeard()
      */
     public void testHasHeard() {
-        phil.addSongHeard("Cinderalla", false);
-        phil.addSongHeard("goosebumps", true);
+        phil.addSong("Cinderalla", true, true);
+        phil.addSong("goosebumps", false, true);
         assertTrue(phil.hasHeard("Cinderalla"));
-        assertTrue(phil.hasHeard("goosebumps"));
-        assertFalse(phil.hasHeard("Star Boy"));
+        assertFalse(phil.hasHeard("goosebumps"));
+        Exception exception = null;
+        try {
+            phil.hasHeard("Star Boy");
+        }
+        catch (Exception e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+        assertTrue(exception instanceof IllegalArgumentException);
     }
+    
     
     /**
      * Tests that doesLike() returns true if a student likes a song,
      * false if he does not like a song, and an exception if the
-     * student has never heard the song.
+     * survey did not contain the song.
      */
     public void testDoesLike() {
-        phil.addSongHeard("wonderful", false);
-        phil.addSongHeard("Time", true);
+        phil.addSong("wonderful", true, false);
+        phil.addSong("Time", true, true);
         assertTrue(phil.doesLike("Time"));
         assertFalse(phil.doesLike("wonderful"));
         Exception exception = null;
