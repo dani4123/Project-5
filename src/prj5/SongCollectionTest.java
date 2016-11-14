@@ -139,6 +139,19 @@ public class SongCollectionTest extends TestCase {
         assertEquals(collection.getEntry(1).getTitle(), "Song2");
         assertEquals(collection.getEntry(24).getTitle(), "Song25");
     }
+    
+    /**
+     * Tests that the sort() method when called with the
+     * default parameter sorts the list alphabetically by title.
+     */
+    public void testSortDefault() {
+        collection.sort(SongPropertyEnum.DEFAULT);
+        assertEquals(collection.getEntry(0), startSong);
+        assertEquals(collection.getEntry(26), endSong);
+        assertEquals(collection.getEntry(1).getTitle(), "Song1");
+        assertEquals(collection.getEntry(2).getTitle(), "Song10");
+        assertEquals(collection.getEntry(25).getTitle(), "Song9");
+    }
 
     /**
      * tests getting nine songs when connecting to the front end.
