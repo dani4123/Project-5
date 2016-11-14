@@ -96,7 +96,7 @@ public class StudentCollectionTest extends TestCase {
     /**
      * Tests heardAndLikedAccordingTo() when the Default enum is the parameter.
      */
-    public void testHeardAndLikedAccordingTo() {
+    public void testHeardAndLikedAccordingToDefault() {
         int[] expected = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         int[] testArray = collection.heardAndLikedAccordingTo("Work", 
                 RepresentationEnum.DEFAULT);
