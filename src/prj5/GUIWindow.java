@@ -89,10 +89,33 @@ public class GUIWindow {
         
         TextShape songtitle = new TextShape(0, 0, "Song Title");
         songtitle.setBackgroundColor(null);
-        songtitle.setX(WINDOW_WIDTH - LEGEND_WIDTH / 2);
+        songtitle.setX(WINDOW_WIDTH - LEGEND_WIDTH / 2 - songtitle.getWidth() / 2);
         songtitle.setY(WINDOW_HEIGHT - LEGEND_HEIGHT + 6 * LEGEND_TEXT_GAP);
         window.addShape(songtitle);
         window.moveToFront(songtitle);
+        
+        Shape seperator = new Shape(WINDOW_WIDTH - LEGEND_WIDTH / 2 -
+                                    LEGEND_TEXT_GAP / 2, 
+                                    WINDOW_HEIGHT - LEGEND_HEIGHT + 
+                                    7 * LEGEND_TEXT_GAP,
+                                    LEGEND_TEXT_GAP, LEGEND_HEIGHT / 4);
+        seperator.setBackgroundColor(Color.BLACK);
+        seperator.setForegroundColor(Color.BLACK);
+        window.addShape(seperator);
+        window.moveToFront(seperator);
+        
+        TextShape heard = new TextShape(0, 0, "Heard");
+        TextShape likes = new TextShape(0, 0, "Likes");
+        heard.setBackgroundColor(null);
+        likes.setBackgroundColor(null);
+        heard.setX(seperator.getX() - heard.getWidth() - LEGEND_TEXT_GAP / 2);
+        heard.setY(seperator.getY() + seperator.getHeight() / 2 - heard.getHeight() / 2);
+        likes.setX(seperator.getX() + seperator.getWidth() + LEGEND_TEXT_GAP / 2);
+        likes.setY(seperator.getY() + seperator.getHeight() / 2 - likes.getHeight() / 2);
+        window.addShape(heard);
+        window.addShape(likes);
+        window.moveToFront(heard);
+        window.moveToFront(likes);
         
         StudentCollection studentCol = new StudentCollection();
         Student dude1 = new Student("Computer Science", "Northeast", "reading");
