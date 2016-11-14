@@ -18,7 +18,7 @@ public class SongCollectionTest extends TestCase {
     private Song startSong;
     private Song song;
     private Song endSong;
-    
+
     /**
      * Called upon before each test method is called.
      * Adds 27 songs to the SongCollection.
@@ -34,7 +34,7 @@ public class SongCollectionTest extends TestCase {
         endSong = new Song("Waves", "Kanye", "2016", "Rap", null);
         collection.add(endSong);
     }
-    
+
     /**
      * Tests the nextNineSongs() method to make sure
      * when the next nine songs are available to display, the method
@@ -45,7 +45,7 @@ public class SongCollectionTest extends TestCase {
         assertTrue(collection.nextNineSongs());
         assertFalse(collection.nextNineSongs());
     }
-    
+
     /**
      * Tests the prevNineSongs() method to make sure when
      * nine songs previously in the list are available to 
@@ -56,7 +56,7 @@ public class SongCollectionTest extends TestCase {
         assertTrue(collection.prevNineSongs());
         assertFalse(collection.prevNineSongs());
     }
-    
+
     /**
      * tests changeRepresentationEnum()
      * checks to see if a song's internal statArray has been
@@ -88,7 +88,7 @@ public class SongCollectionTest extends TestCase {
         assertEquals(1, song2.getStatArray()[10]);
         assertEquals(1, song2.getStatArray()[11]);
     }
-    
+
     /**
      * Tests that the sort() method when called with the
      * Artist parameter sorts the list alphabetically by artist.
@@ -100,7 +100,7 @@ public class SongCollectionTest extends TestCase {
         assertEquals(collection.getEntry(2).getTitle(), "Song1");
         assertEquals(collection.getEntry(26).getTitle(), "Song25");
     }
-    
+
     /**
      * Tests that the sort() method when called with the
      * Title parameter sorts the list alphabetically by title.
@@ -113,7 +113,7 @@ public class SongCollectionTest extends TestCase {
         assertEquals(collection.getEntry(2).getTitle(), "Song10");
         assertEquals(collection.getEntry(25).getTitle(), "Song9");
     }
-    
+
     /**
      * Tests that the sort() method when called with the
      * year parameter sorts the list chronologically by year.
@@ -126,7 +126,7 @@ public class SongCollectionTest extends TestCase {
         assertEquals(collection.getEntry(1).getTitle(), "Song2");
         assertEquals(collection.getEntry(24).getTitle(), "Song25");
     }
-    
+
     /**
      * Tests that the sort() method when called with the
      * genre parameter sorts the list alphabetically by genre.
@@ -139,8 +139,8 @@ public class SongCollectionTest extends TestCase {
         assertEquals(collection.getEntry(1).getTitle(), "Song2");
         assertEquals(collection.getEntry(24).getTitle(), "Song25");
     }
-    
+
     public void testGetNineSongsToShow() {
-        
+
     }
 }

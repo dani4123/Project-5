@@ -25,7 +25,7 @@ public class Input {
      * Collection of Songs
      */
     private SongCollection songCollection;
-    
+
     /**
      * Collection of Students
      */
@@ -103,7 +103,7 @@ public class Input {
             {
                 dataArray = entireLine;
             }
-            
+
             major = dataArray[2];
             region = dataArray[3];
             hobby = dataArray[4];
@@ -163,7 +163,7 @@ public class Input {
                 }
             }
         }
-        
+
         scanner.close();
 
         outputAs(RepresentationEnum.HOBBY, SongPropertyEnum.GENRE);
@@ -220,14 +220,14 @@ public class Input {
                 }
             }
             System.out.printf("reading%d art%d sports%d music%d\n", outputPerc[0],
-                                outputPerc[2], outputPerc[4], outputPerc[6]);
+                    outputPerc[2], outputPerc[4], outputPerc[6]);
             System.out.println("likes");
             System.out.printf("reading%d art%d sports%d music%d\n", outputPerc[1],
-                                outputPerc[3], outputPerc[5], outputPerc[7]);
+                    outputPerc[3], outputPerc[5], outputPerc[7]);
             System.out.println("");
         }
     }
-    
+
     /**
      * Read in songs from input file
      * and add to SongCollection
@@ -248,7 +248,7 @@ public class Input {
         }
         scanner.close();
     }
-    
+
     /**
      * Getter method for songCollection param
      * @return songCollection param

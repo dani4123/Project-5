@@ -12,7 +12,7 @@ import student.TestCase;
 public class LinkedListTest extends TestCase {
 
     private LinkedList<String> list;
-    
+
     /**
      * Called upon before every test method is called.
      */
@@ -126,7 +126,7 @@ public class LinkedListTest extends TestCase {
         assertFalse(list.contains("item 4"));
     }
 
-    
+
     /**
      * Tests that the replace() method correctly replaces an
      * entry's data in the list.
@@ -138,7 +138,7 @@ public class LinkedListTest extends TestCase {
         assertEquals(list.replace(2, "new item"), "item 3");
         assertFalse(list.contains("item 3"));
     }
-    
+
     /**
      * Tests that the iterator returns the correct values 
      * when it has a next.
@@ -154,7 +154,7 @@ public class LinkedListTest extends TestCase {
         assertEquals(iter.next(), "item3");
         assertFalse(iter.hasNext());
     }
-    
+
     /**
      * Tests that the iterator returns the correct statements
      * when the iterator does not have a next.

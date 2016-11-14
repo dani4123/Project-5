@@ -31,17 +31,17 @@ public class GUIWindow {
     private Button representRegion;
     private SongPropertyEnum currentSongProperty;
     private RepresentationEnum currentRepresentation;
-    
+
     private static final int WINDOW_WIDTH = 1280;
     private static final int WINDOW_HEIGHT = 720;
     private static final int LEGEND_WIDTH = 220;
     private static final int LEGEND_HEIGHT = 400;
     private static final int LEGEND_TEXT_GAP = 20;
-    
+
     private TextShape[] legendText;
-    
+
     private SongGraphic[] currentShown;
-    
+
     public GUIWindow(Input filereader)
     {
         if (filereader != null)
@@ -63,7 +63,7 @@ public class GUIWindow {
         representHobby = new Button("Represent Hobby");
         representMajor = new Button("Represent Major");
         representRegion = new Button("RepresentRegion");
-        
+
         window.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         window.addButton(previousButton, WindowSide.NORTH);
         window.addButton(sortByArtist, WindowSide.NORTH);
@@ -75,36 +75,36 @@ public class GUIWindow {
         window.addButton(representMajor, WindowSide.SOUTH);
         window.addButton(representRegion, WindowSide.SOUTH);
         window.addButton(quitButton, WindowSide.SOUTH);
-        
+
         currentSongProperty = SongPropertyEnum.TITLE;
         currentRepresentation = RepresentationEnum.HOBBY;
-        
+
         Shape legendBox = new Shape(WINDOW_WIDTH - LEGEND_WIDTH,
-                                    WINDOW_HEIGHT - LEGEND_HEIGHT,
-                                    LEGEND_WIDTH, LEGEND_HEIGHT);
+                WINDOW_HEIGHT - LEGEND_HEIGHT,
+                LEGEND_WIDTH, LEGEND_HEIGHT);
         legendBox.setBackgroundColor(Color.WHITE);
         legendBox.setForegroundColor(Color.BLACK);
         window.addShape(legendBox);
-        
+
         setUpLegend(RepresentationEnum.HOBBY);
-        
+
         TextShape songtitle = new TextShape(0, 0, "Song Title");
         songtitle.setBackgroundColor(null);
         songtitle.setX(WINDOW_WIDTH - LEGEND_WIDTH / 2 - songtitle.getWidth() / 2);
         songtitle.setY(WINDOW_HEIGHT - LEGEND_HEIGHT + 6 * LEGEND_TEXT_GAP);
         window.addShape(songtitle);
         window.moveToFront(songtitle);
-        
+
         Shape seperator = new Shape(WINDOW_WIDTH - LEGEND_WIDTH / 2 -
-                                    LEGEND_TEXT_GAP / 2, 
-                                    WINDOW_HEIGHT - LEGEND_HEIGHT + 
-                                    7 * LEGEND_TEXT_GAP,
-                                    LEGEND_TEXT_GAP, LEGEND_HEIGHT / 4);
+                LEGEND_TEXT_GAP / 2, 
+                WINDOW_HEIGHT - LEGEND_HEIGHT + 
+                7 * LEGEND_TEXT_GAP,
+                LEGEND_TEXT_GAP, LEGEND_HEIGHT / 4);
         seperator.setBackgroundColor(Color.BLACK);
         seperator.setForegroundColor(Color.BLACK);
         window.addShape(seperator);
         window.moveToFront(seperator);
-        
+
         TextShape heard = new TextShape(0, 0, "Heard");
         TextShape likes = new TextShape(0, 0, "Likes");
         heard.setBackgroundColor(null);
@@ -117,7 +117,7 @@ public class GUIWindow {
         window.addShape(likes);
         window.moveToFront(heard);
         window.moveToFront(likes);
-        
+
         StudentCollection studentCol = new StudentCollection();
         Student dude1 = new Student("Computer Science", "Northeast", "reading");
         dude1.addSong("Default", 0, 0);
@@ -139,7 +139,7 @@ public class GUIWindow {
         SongGraphic sg = new SongGraphic(testSong, SongPropertyEnum.ARTIST, 250, 100);
         sg.addToWindow(window);
     }
-    
+
     public void setUpLegend(RepresentationEnum re)
     {
         TextShape[] returnText = new TextShape[5];
@@ -172,19 +172,19 @@ public class GUIWindow {
             returnText[i].setBackgroundColor(null);
             returnText[i].setX(WINDOW_WIDTH - LEGEND_WIDTH + LEGEND_TEXT_GAP / 2);
             returnText[i].setY(WINDOW_HEIGHT - LEGEND_HEIGHT + i * LEGEND_TEXT_GAP +
-                                LEGEND_TEXT_GAP / 2);
+                    LEGEND_TEXT_GAP / 2);
             window.addShape(returnText[i]);
             window.moveToFront(returnText[i]);
         }
     }
-    
+
     private class SongGraphic
     {
         private Song song;
         private SongPropertyEnum songInfo;
         private static final int sizeMultiplier = 1;
         private static final int graphThickness = 30;
-        
+
         private Shape firstHeard;
         private Shape firstLiked;
         private Shape secondHeard;
@@ -196,13 +196,13 @@ public class GUIWindow {
         private Shape divider;
         private TextShape title;
         private TextShape representation;
-        
+
         public SongGraphic()
         {
             this(new Song("Default", "artist", "0", "genre", null),
                     SongPropertyEnum.ARTIST, 300, 300);
         }
-        
+
         public SongGraphic(Song theSong, SongPropertyEnum sortedBy, int x, int y)
         {
             song = theSong;
@@ -210,22 +210,22 @@ public class GUIWindow {
             int[] info = song.getStatArray();
             divider = new Shape(x, y, graphThickness / 2, graphThickness * 4, Color.BLACK);
             firstHeard = new Shape(x - info[0] * sizeMultiplier, y,
-                                    info[0] * sizeMultiplier, graphThickness, Color.MAGENTA);
+                    info[0] * sizeMultiplier, graphThickness, Color.MAGENTA);
             firstLiked = new Shape(x + graphThickness / 2, y,
-                                    info[1] * sizeMultiplier, graphThickness, Color.MAGENTA);
+                    info[1] * sizeMultiplier, graphThickness, Color.MAGENTA);
             secondHeard = new Shape(x - info[2] * sizeMultiplier, y + graphThickness,
-                                    info[2] * sizeMultiplier, graphThickness, Color.BLUE);
+                    info[2] * sizeMultiplier, graphThickness, Color.BLUE);
             secondLiked = new Shape(x + graphThickness / 2, y + graphThickness,
-                                    info[3] * sizeMultiplier, graphThickness, Color.BLUE);
+                    info[3] * sizeMultiplier, graphThickness, Color.BLUE);
             thirdHeard = new Shape(x - info[4] * sizeMultiplier, y + graphThickness * 2,
-                                    info[4] * sizeMultiplier, graphThickness, Color.ORANGE);
+                    info[4] * sizeMultiplier, graphThickness, Color.ORANGE);
             thirdLiked = new Shape(x + graphThickness / 2, y + graphThickness * 2,
-                                    info[5] * sizeMultiplier, graphThickness, Color.ORANGE);
+                    info[5] * sizeMultiplier, graphThickness, Color.ORANGE);
             fourthHeard = new Shape(x - info[6] * sizeMultiplier, y + graphThickness * 3,
-                                    info[6] * sizeMultiplier, graphThickness, Color.GREEN);
+                    info[6] * sizeMultiplier, graphThickness, Color.GREEN);
             fourthLiked = new Shape(x + graphThickness / 2, y + graphThickness * 3,
-                                    info[7] * sizeMultiplier, graphThickness, Color.GREEN);
-            
+                    info[7] * sizeMultiplier, graphThickness, Color.GREEN);
+
             title = new TextShape(x, y, song.getTitle());
             title.setBackgroundColor(null);
             switch (sortedBy)
@@ -249,7 +249,7 @@ public class GUIWindow {
             representation.setX(x + divider.getWidth() / 2 - representation.getWidth() / 2);
             representation.setY(y - representation.getHeight());
         }
-        
+
         public void addToWindow(Window win)
         {
             win.addShape(divider);
@@ -264,7 +264,7 @@ public class GUIWindow {
             win.addShape(title);
             win.addShape(representation);
         }
-        
+
         public void removeFromWindow(Window win)
         {
             win.removeShape(divider);

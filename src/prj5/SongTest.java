@@ -47,7 +47,7 @@ public class SongTest extends TestCase {
     {
         assertTrue("Work".equals(song1.getTitle()));
     }
-    
+
     /**
      * Tests the getGenre method to make sure the correct
      * genre is returned.
@@ -56,7 +56,7 @@ public class SongTest extends TestCase {
     {
         assertTrue("alternative".equals(song1.getGenre()));
     }
-    
+
     /**
      * Tests the getArtist method to make sure the correct 
      * artist is returned.
@@ -65,7 +65,7 @@ public class SongTest extends TestCase {
     {
         assertTrue("The Killers".equals(song1.getArtist()));
     }
-    
+
     /**
      * Tests the getYear method to make sure the correct 
      * year is returned.
@@ -74,7 +74,7 @@ public class SongTest extends TestCase {
     {
         assertEquals(2005, song1.getYear());
     }
-    
+
     /**
      * Tests the getStatArray method
      */
@@ -82,7 +82,7 @@ public class SongTest extends TestCase {
     {
         assertEquals(16, song1.getStatArray().length);
     }
-    
+
     /**
      * Tests setStatArray method
      */
