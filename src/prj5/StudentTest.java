@@ -45,8 +45,8 @@ public class StudentTest extends TestCase {
      */
     public void testAddSong() {
         phil.addSong("Star Boy", 0, 0);
-        assertEquals(phil.getHeardResponse("Star Boy"), 0);
-        assertEquals(phil.getLikedResponse("Star Boy"), 0);
+        assertEquals(phil.getResponseHeard("Star Boy"), 0);
+        assertEquals(phil.getResponseLiked("Star Boy"), 0);
     }
     
     /**
@@ -58,9 +58,9 @@ public class StudentTest extends TestCase {
         phil.addSong("Cinderella", 0, 0);
         phil.addSong("goosebumps", 1, 0);
         phil.addSong("Waves", 2, 2);
-        assertEquals(phil.getHeardResponse("Cinderella"), 0);
-        assertEquals(phil.getHeardResponse("goosebumps"), 1);
-        assertEquals(phil.getHeardResponse("Waves"), 2);
+        assertEquals(phil.getResponseHeard("Cinderella"), 0);
+        assertEquals(phil.getResponseHeard("goosebumps"), 1);
+        assertEquals(phil.getResponseHeard("Waves"), 2);
     }
     
     
@@ -73,8 +73,8 @@ public class StudentTest extends TestCase {
         phil.addSong("wonderful", 0, 1);
         phil.addSong("Time", 0, 0);
         phil.addSong("Wolves", 2, 2);
-        assertEquals(phil.getLikedResponse("Time"), 0);
-        assertEquals(phil.getLikedResponse("wonderful"), 1);
-        assertEquals(phil.getLikedResponse("Wolves"), 2);
+        assertEquals(phil.getResponseLiked("Time"), 0);
+        assertEquals(phil.getResponseLiked("wonderful"), 1);
+        assertEquals(phil.getResponseLiked("Wolves"), 2);
     }
 }

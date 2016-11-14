@@ -15,6 +15,11 @@ public class StudentCollectionTest extends TestCase {
     private Student student2;
     private Student student3;
     private Student student4;
+    private Student student5;
+    private Student student6;
+    private Student student7;
+    private Student student8;
+
     
     /**
      * Called upon before each test method is called. Instantiates
@@ -25,26 +30,38 @@ public class StudentCollectionTest extends TestCase {
     public void setUp() {
         collection = new StudentCollection();
         student1 = new Student("Computer Science", "Northeast", "reading");
-        student1.addSong("Work", true, true);
+        student1.addSong("Work", 0, 0);
         student2 = new Student("Other Engineering", "Southeast", "art");
-        student2.addSong("Work", false, false);
+        student2.addSong("Work", 1, 1);
         student3 = new Student("Math or CMDA", "United States (other than Southeast or Northwest)", "sports");
-        student3.addSong("Work", true, true);
+        student3.addSong("Work", 0, 0);
         student4 = new Student("Other", "Outside of United States", "music");
-        student4.addSong("Work", false, false);
+        student4.addSong("Work", 1, 1);
+        student5 = new Student("Computer Science", "Northeast", "reading");
+        student5.addSong("Work", 2, 2);
+        student6 = new Student("Other Engineering", "Southeast", "art");
+        student6.addSong("Work", 2, 2);
+        student7 = new Student("Math or CMDA", "United States (other than Southeast or Northwest)", "sports");
+        student7.addSong("Work", 2, 2);
+        student8 = new Student("Other", "Outside of United States", "music");
+        student8.addSong("Work", 2, 2);
         collection.add(student1);
         collection.add(student2);
         collection.add(student3);
         collection.add(student4);
+        collection.add(student5);
+        collection.add(student6);
+        collection.add(student7);
+        collection.add(student8);
     }
     
     /**
      * Tests heardAndLikedAccordingTo() when the Hobby enum is the parameter.
      */
     public void testHeardAndLikedAccordingToHobby() {
-        int[] expectedHobby = {1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0};
+        int[] expectedHobby = {1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0};
         int[] testArray = collection.heardAndLikedAccordingTo("Work", RepresentationEnum.HOBBY);
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 16; i++) {
             assertEquals(expectedHobby[i], testArray[i]);
         }
     }
@@ -53,9 +70,9 @@ public class StudentCollectionTest extends TestCase {
      * Tests heardAndLikedAccordingTo() when the Major enum is the parameter.
      */
     public void testHeardAndLikedAccordingToMajor() {
-        int[] expectedMajor = {1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0};
+        int[] expectedMajor = {1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0};
         int[] testArray = collection.heardAndLikedAccordingTo("Work", RepresentationEnum.MAJOR);
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 16; i++) {
             assertEquals(expectedMajor[i], testArray[i]);
         }
     }
@@ -64,9 +81,9 @@ public class StudentCollectionTest extends TestCase {
      * Tests heardAndLikedAccordingTo() when the Region enum is the parameter.
      */
     public void testHeardAndLikedAccordingToRegion() {
-        int[] expectedRegion = {1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0};
+        int[] expectedRegion = {1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0};
         int[] testArray = collection.heardAndLikedAccordingTo("Work", RepresentationEnum.REGION);
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 16; i++) {
             assertEquals(expectedRegion[i], testArray[i]);
         }
     }
