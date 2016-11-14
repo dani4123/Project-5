@@ -1,4 +1,4 @@
-package project5;
+package prj5;
 
 /**
  * class used to test window layout

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package project5;
+package prj5;
 
 import student.TestCase;
 /**
@@ -26,16 +26,15 @@ public class SongTest extends TestCase {
     public void setUp()
     {
         collection = new StudentCollection();
-        
-        student1 = new Student("Computer Science", "reading", "Northeast");
+        student1 = new Student("Computer Science", "Northeast", "reading");
         student1.addSongHeard("Work", true);
-        student2 = new Student("Other Engineering", "art", "Southeast");
+        student2 = new Student("Other Engineering", "Southeast", "art");
         student2.addSongHeard("Work", false);
-        student3 = new Student("Math or CMDA", "sports", "United States (other than Southeast or Northwest)");
+        student3 = new Student("Math or CMDA", "United States (other than Southeast or Northwest)", "sports");
         student3.addSongHeard("Work", true);
-        student4 = new Student("Other", "music", "Outside of United States");
+        student4 = new Student("Other", "Outside of United States", "music");
         student4.addSongHeard("Work", false);
-        student5 = new Student("Other", "music", "Northeast");
+        student5 = new Student("Other", "Northeast", "music");
         student5.addSongHeard("Views", true);
         collection.add(student1);
         collection.add(student2);

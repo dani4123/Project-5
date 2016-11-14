@@ -1,4 +1,4 @@
-package project5;
+package prj5;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import student.TestCase;
