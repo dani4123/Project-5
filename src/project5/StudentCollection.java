@@ -52,24 +52,26 @@ public class StudentCollection extends LinkedList<Student>
 				if (current.hasHeard(title))
 				{
 					int position = 0;
-					switch (current.getHobby())
+					String curHobby = current.getHobby();
+					if (curHobby.equals("reading"))
 					{
-					case "reading":
-						returnArray[0]++;
-						position = 1;
-						break;
-					case "art":
-						returnArray[2]++;
-						position = 3;
-						break;
-					case "sports":
-						returnArray[4]++;
-						position = 5;
-						break;
-					case "music":
-						returnArray[6]++;
-						position = 7;
-						break;
+					    returnArray[0]++;
+                        position = 1;
+					}
+					else if (curHobby.equals("art"))
+                    {
+					    returnArray[2]++;
+                        position = 3;
+                    }
+					else if (curHobby.equals("sports"))
+                    {
+					    returnArray[4]++;
+                        position = 5;
+                    }
+					else
+					{
+					    returnArray[6]++;
+                        position = 7;
 					}
 					if (current.doesLike(title))
 					{
@@ -87,25 +89,27 @@ public class StudentCollection extends LinkedList<Student>
 				if (current.hasHeard(title))
 				{
 					int position = 0;
-					switch (current.getHobby())
-					{
-					case "Computer Science":
-						returnArray[0]++;
-						position = 1;
-						break;
-					case "Other Engineering":
-						returnArray[2]++;
-						position = 3;
-						break;
-					case "Math or CMDA":
-						returnArray[4]++;
-						position = 5;
-						break;
-					case "Other":
-						returnArray[6]++;
-						position = 7;
-						break;
-					}
+					String curMajor = current.getMajor();
+                    if (curMajor.equals("Computer Science"))
+                    {
+                        returnArray[0]++;
+                        position = 1;
+                    }
+                    else if (curMajor.equals("Other Engineering"))
+                    {
+                        returnArray[2]++;
+                        position = 3;
+                    }
+                    else if (curMajor.equals("Math or CMDA"))
+                    {
+                        returnArray[4]++;
+                        position = 5;
+                    }
+                    else
+                    {
+                        returnArray[6]++;
+                        position = 7;
+                    }
 					if (current.doesLike(title))
 					{
 						returnArray[position]++;
@@ -122,25 +126,27 @@ public class StudentCollection extends LinkedList<Student>
 				if (current.hasHeard(title))
 				{
 					int position = 0;
-					switch (current.getHobby())
-					{
-					case "Northeast":
-						returnArray[0]++;
-						position = 1;
-						break;
-					case "Southeast":
-						returnArray[2]++;
-						position = 3;
-						break;
-					case "United States (other than Southeast or Northwest)":
-						returnArray[4]++;
-						position = 5;
-						break;
-					case "Outside of United States":
-						returnArray[6]++;
-						position = 7;
-						break;
-					}
+					String curRegion = current.getRegion();
+                    if (curRegion.equals("Northeast"))
+                    {
+                        returnArray[0]++;
+                        position = 1;
+                    }
+                    else if (curRegion.equals("Southeast"))
+                    {
+                        returnArray[2]++;
+                        position = 3;
+                    }
+                    else if (curRegion.equals("United States (other than Southeast or Northwest)"))
+                    {
+                        returnArray[4]++;
+                        position = 5;
+                    }
+                    else
+                    {
+                        returnArray[6]++;
+                        position = 7;
+                    }
 					if (current.doesLike(title))
 					{
 						returnArray[position]++;
