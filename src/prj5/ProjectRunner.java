@@ -7,7 +7,7 @@ package prj5;
  * @version 11.13.16
  *
  */
-public class RunGUIWindow {
+public class ProjectRunner {
 
     /**
      * launch the window
