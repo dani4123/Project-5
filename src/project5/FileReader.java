@@ -5,6 +5,7 @@ package project5;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -71,7 +72,7 @@ public class FileReader {
         {
             //String of entire line before being split up into specific info
             String[] entireLine = scanner.nextLine().trim().split(",");
-            if (entireLine.length == (songCollection.getSize() * 2 + 4)) 
+            if (entireLine.length == (songCollection.getLength() * 2 + 4)) 
             {
                 dataArray = new String[entireLine.length + 1];
                 for (int i = 0; i < entireLine.length; i++) 
@@ -94,12 +95,25 @@ public class FileReader {
             hobby = dataArray[4];
             if (!major.equals("") && !region.equals("") 
                     && !hobby.equals(""))
-            Student student = new Student(major, region, hobby);
-            studentCollection.add(student);
-            for (int i = 5; (i + 1) < dataArray.length; i++) 
             {
-                song = songCollection.getSong((i - 5) / 2);
-                student.addSongHeard(song, liked);
+                Student student = new Student(major, region, hobby);
+                studentCollection.add(student);
+                for (int i = 5; (i + 1) < dataArray.length; i += 2) 
+                {
+                    Iterator<Song> iter = songCollection.iterator();
+                    song = iter.next();
+                    if (dataArray[i].toString().equals("Yes"))
+                    {
+                        if (dataArray[i + 1].toString().equals("Yes"))
+                        {
+                            student.addSongHeard(song.getTitle(), true); 
+                        }
+                        else
+                        {
+                            student.addSongHeard(song.getTitle(), false);
+                        }
+                    }
+                }
             }
         }
         scanner.close();
@@ -120,7 +134,7 @@ public class FileReader {
         while (scanner.hasNextLine()) 
         {
             songArray = scanner.nextLine().trim().split(",");
-            songList.add(new Song(songArray[0], songArray[1], songArray[2], songArray[3],
+            this.songCollection.add(new Song(songArray[0], songArray[1], songArray[2], songArray[3],
                     this.studentCollection));
         }
         scanner.close();
