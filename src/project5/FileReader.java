@@ -17,6 +17,11 @@ public class FileReader {
      * Collection of Songs
      */
     private SongCollection songCollection;
+    
+    /**
+     * Collection of Students
+     */
+    private StudentCollection studentCollection;
 
     /**
      * Default Constructor
@@ -28,9 +33,10 @@ public class FileReader {
     public FileReader(String studentData, String songList) throws IOException
     {
         this.songCollection = new SongCollection();
-        readInStudentData(studentData);
+        this.studentCollection = new StudentCollection();
         readInSongList(songList);
-        //new FrontEnd instance with songCollection parameter
+        readInStudentData(studentData);
+        new GUIWindow(this.songCollection, this.studentCollection);
     }
 
     /**
@@ -40,7 +46,8 @@ public class FileReader {
      */
     public static void main(String[] args) throws IOException
     {
-        if (args.length == 2){
+        if (args.length == 2)
+        {
             new FileReader(args[0], args[1]);
         }
         else
@@ -81,18 +88,41 @@ public class FileReader {
             {
                 continue;
             }
+            
             major = dataArray[2];
             region = dataArray[3];
             hobby = dataArray[4];
-            for (int i = 5; (i + 1) < dataArray.length; i += 2) {
+            if (!major.equals("") && !region.equals("") 
+                    && !hobby.equals(""))
+            Student student = new Student(major, region, hobby);
+            studentCollection.add(student);
+            for (int i = 5; (i + 1) < dataArray.length; i++) 
+            {
                 song = songCollection.getSong((i - 5) / 2);
-                song.getMajorCount().increment(major, dataArray[i], dataArray[i + 1]);
-                song.getRegionCount().increment(region, dataArray[i], dataArray[i + 1]);
-                song.getHobbyCount().increment(hobby, dataArray[i], dataArray[i + 1]);
+                student.addSongHeard(song, liked);
             }
         }
         scanner.close();
     }
 
-
+    /**
+     * Read in songs from input file
+     * and add to SongCollection
+     * 
+     * @param songList Input file
+     * @throws IOException
+     */
+    public void readInSongList(String songList) throws IOException
+    {
+        Scanner scanner = new Scanner(new File(songList));
+        String[] songArray;
+        scanner.nextLine();
+        while (scanner.hasNextLine()) 
+        {
+            songArray = scanner.nextLine().trim().split(",");
+            songList.add(new Song(songArray[0], songArray[1], songArray[2], songArray[3],
+                    this.studentCollection));
+        }
+        scanner.close();
+    }
 }

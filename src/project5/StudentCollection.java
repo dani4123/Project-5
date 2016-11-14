@@ -35,7 +35,7 @@ public class StudentCollection {
 	 * 
 	 * @param student  student to add
 	 */
-	public void addstudent(Student student)
+	public void addStudent(Student student)
 	{
 		studentList.add(student);
 	}
@@ -59,8 +59,8 @@ public class StudentCollection {
 	 * 6 - 4th category heard
 	 * 7 - 5th category liked
 	 * 
-	 * @param title    song's title
-	 * @param rep  representation type
+	 * @param title song's title
+	 * @param rep representation type
 	 * @return array with poll information
 	 */
 	public int[] heardAndLikedAccordingTo(String title, RepresentationEnum rep)

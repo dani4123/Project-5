@@ -15,7 +15,7 @@ public class StudentTest extends TestCase {
      * Called upon before every test method is called.
      */
     public void setUp() {
-        phil = new Student("CS", "Reading", "Oakton");
+        phil = new Student("CS", "Oakton", "Reading");
     }
     
     /**

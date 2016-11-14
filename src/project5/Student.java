@@ -22,10 +22,10 @@ public class Student {
      * @param hobby The students main hobby
      * @param region The students region of residence
      */
-    public Student(String major, String hobby, String region) {
+    public Student(String major, String region, String hobby) {
         this.major = major;
-        this.hobby = hobby;
         this.region = region;
+        this.hobby = hobby;
         songInfo = new HashMap<String, Boolean>();
     }
     
