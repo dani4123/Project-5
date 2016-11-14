@@ -68,7 +68,7 @@ public class Student {
      * @return 0 if the student heard it, 1 if the student did not hear it
      *          2, if there was no response
      */
-    public int getHeardResponse(String song) {
+    public int getResponseHeard(String song) {
         return songInfo.get(song)[0];
     }
     
@@ -78,7 +78,7 @@ public class Student {
      * @return 0 if the student liked it, 1 if the student did not like it
      *          2, if there was no response
      */
-    public int getLikedResponse(String song) {
+    public int getResponseLiked(String song) {
         return songInfo.get(song)[1];
     }
 }

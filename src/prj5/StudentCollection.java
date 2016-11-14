@@ -68,18 +68,18 @@ public class StudentCollection extends LinkedList<Student>
                 {
                     position = 12;
                 }
-                if (current.getResponseHeard() != 2)
+                if (current.getResponseHeard(title) != 2)
                 {
                     returnArray[position]++;
-                    if (current.getResponseHeard() == 0)
+                    if (current.getResponseHeard(title) == 0)
                     {
                         returnArray[position + 1]++;
                     }
                 }
-                if (current.getResponseLiked() != 2)
+                if (current.getResponseLiked(title) != 2)
                 {
                     returnArray[position + 2]++;
-                    if (current.getResponseLiked() == 0)
+                    if (current.getResponseLiked(title) == 0)
                     {
                         returnArray[position + 3]++;
                     }
@@ -109,18 +109,18 @@ public class StudentCollection extends LinkedList<Student>
                 {
                     position = 12;
                 }
-                if (current.getResponseHeard() != 2)
+                if (current.getResponseHeard(title) != 2)
                 {
                     returnArray[position]++;
-                    if (current.getResponseHeard() == 0)
+                    if (current.getResponseHeard(title) == 0)
                     {
                         returnArray[position + 1]++;
                     }
                 }
-                if (current.getResponseLiked() != 2)
+                if (current.getResponseLiked(title) != 2)
                 {
                     returnArray[position + 2]++;
-                    if (current.getResponseLiked() == 0)
+                    if (current.getResponseLiked(title) == 0)
                     {
                         returnArray[position + 3]++;
                     }
@@ -149,18 +149,18 @@ public class StudentCollection extends LinkedList<Student>
                 {
                     position = 12;
                 }
-                if (current.getResponseHeard() != 2)
+                if (current.getResponseHeard(title) != 2)
                 {
                     returnArray[position]++;
-                    if (current.getResponseHeard() == 0)
+                    if (current.getResponseHeard(title) == 0)
                     {
                         returnArray[position + 1]++;
                     }
                 }
-                if (current.getResponseLiked() != 2)
+                if (current.getResponseLiked(title) != 2)
                 {
                     returnArray[position + 2]++;
-                    if (current.getResponseLiked() == 0)
+                    if (current.getResponseLiked(title) == 0)
                     {
                         returnArray[position + 3]++;
                     }
