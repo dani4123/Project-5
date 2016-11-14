@@ -91,7 +91,7 @@ public class Song {
      */
     public void setStatArray(RepresentationEnum rEnum)
     {
-        statArray = studentCollection.heardAndLikedAccordingTo
-            (this.title, rEnum);
+        statArray = studentCollection.heardAndLikedAccordingTo(
+            this.title, rEnum);
     }
 }
