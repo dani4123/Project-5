@@ -144,12 +144,13 @@ public class LinkedList<E> implements ListInterface<E> {
     /**
      * Gets the data stored in the Node at the specified index
      * @param index The index in the list 
-     * @return E the data stored in the Node, or null if the list 
-     *          is empty or the index is greater than the size.
+     * @return E the data stored in the Node
+     * @throws IndexOutOfBoundsException if the index is greater 
+     * than or equal to the size or less than 0.
      */
     public E getEntry(int index) {
-        if (index < 0 || index >= size) {
-            return null;
+        if (index < 0 ) {
+            throw new IndexOutOfBoundsException();
         }
         Node<E> current = head.next();
         int currentIndex = 0;
@@ -162,9 +163,8 @@ public class LinkedList<E> implements ListInterface<E> {
             currentIndex++;
             current = current.next();
         }
-        // check if the data was null;
         if (data == null) {
-            throw new IndexOutOfBoundsException(); 
+            throw new IndexOutOfBoundsException();
         }
         return data;
     }
@@ -225,6 +225,9 @@ public class LinkedList<E> implements ListInterface<E> {
         return replacedData;
     }
 
+    /**
+     * Left unimplemented.
+     */
     @Override
     public Object[] toArray() {
         return null;

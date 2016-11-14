@@ -47,6 +47,13 @@ public class LinkedListTest extends TestCase {
             thrown = e;
         }
         assertTrue(thrown instanceof IndexOutOfBoundsException);
+        try {
+            list.add(1, null);
+        }
+        catch (Exception e) {
+            thrown = e;
+        }
+        assertTrue(thrown instanceof IllegalArgumentException);
     }
 
     /**
@@ -99,8 +106,6 @@ public class LinkedListTest extends TestCase {
      * specified index in the list. 
      */
     public void testGetEntry() {
-        assertNull(list.getEntry(0));
-        assertNull(list.getEntry(-1));
         list.add("item 1");
         list.add("item 2");
         list.add("item 3");
@@ -108,6 +113,22 @@ public class LinkedListTest extends TestCase {
         assertEquals(list.getEntry(1), "item 2");
         assertEquals(list.getEntry(2), "item 3");
         assertEquals(list.getLength(), 3);
+        Exception exception;
+        exception = null;
+        try {
+            list.getEntry(-1);
+        } 
+        catch (IndexOutOfBoundsException e) {
+            exception = e;
+        }
+        assertTrue( exception instanceof IndexOutOfBoundsException);
+        try {
+            list.getEntry(4);
+        }
+        catch (IndexOutOfBoundsException e) {
+            exception = e;
+        }
+        assertTrue( exception instanceof IndexOutOfBoundsException);
     }
 
     /**
@@ -171,5 +192,12 @@ public class LinkedListTest extends TestCase {
             exception = e;
         }
         assertTrue( exception instanceof NoSuchElementException);
+    }
+    
+    /**
+     * Must be tested in order for full coverage
+     */
+    public void testToArray() {
+        assertNull(list.toArray());
     }
 }
