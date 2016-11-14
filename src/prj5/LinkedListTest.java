@@ -3,11 +3,10 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import student.TestCase;
 
-
 /**
  * This test class tests the methods in the LinkedList class
  * to ensure that the methods are all functioning correctly.
- * @author Phillip
+ * @author Phillip Hrinko
  * @version 2016.11.12
  */
 public class LinkedListTest extends TestCase {

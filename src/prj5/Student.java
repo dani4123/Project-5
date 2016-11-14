@@ -30,7 +30,7 @@ public class Student {
     }
     
     /**
-     * 
+     * Getter method for students major
      * @return the students major
      */
     public String getMajor() {
@@ -38,7 +38,7 @@ public class Student {
     }
     
     /**
-     * 
+     * Getter method for the students hobby
      * @return the students hobby
      */
     public String getHobby() {
@@ -46,7 +46,7 @@ public class Student {
     }
     
     /**
-     * 
+     * Getter method for the students region
      * @return the students region of residence
      */
     public String getRegion() {
@@ -54,9 +54,9 @@ public class Student {
     }
     
     /**
-     * Adds the song to the list of songs the student has heard
-     * @param song The song the student heard
-     * @param True if he liked the song.
+     * Adds the song to the map of songs the student has information on
+     * @param heard True if the student heard the song.
+     * @param liked True if the student liked the song.
      */
     public void addSong(String song, boolean heard, boolean liked) {
         songInfo.put(song, new Boolean[] {heard, liked});

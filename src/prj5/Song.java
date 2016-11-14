@@ -4,8 +4,8 @@ package prj5;
  * @author JulianNguyen
  * @version 11/13/16
  * 
- * Song Class represents each song that is read in
- * by the File Reader
+ * This class represents each song that is read in by the File Reader.
+ * Each song has the following information: Title, Genre, Artist and Year.
  */
 public class Song {
     

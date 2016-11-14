@@ -43,9 +43,10 @@ public class StudentTest extends TestCase {
      * Tests that addSongHeard() adds a song to the HashMap that stores
      * all the song information.
      */
-    public void testAddSongHeard() {
+    public void testAddSong() {
         phil.addSong("Star Boy", true, true);
         assertTrue(phil.hasHeard("Star Boy"));
+        assertTrue(phil.doesLike("Star Boy"));
     }
     
     /**
