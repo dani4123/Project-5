@@ -40,7 +40,7 @@ public class StudentCollection extends LinkedList<Student>
     public int[] heardAndLikedAccordingTo(String title, RepresentationEnum rep)
     {
         Iterator<Student> iter = iterator();
-        int[] returnArray = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] returnArray = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         
         switch (rep)
         {
@@ -52,31 +52,35 @@ public class StudentCollection extends LinkedList<Student>
                 String curHobby = current.getHobby();
                 if (curHobby.equals("reading"))
                 {
-                    returnArray[0]++;
                     position = 0;
                 }
                 else if (curHobby.equals("art"))
                 {
-                    returnArray[3]++;
-                    position = 3;
+                    position = 4;
                 }
                 else if (curHobby.equals("sports"))
                 {
-                    returnArray[6]++;
-                    position = 6;
+                    position = 8;
                 }
                 else
                 {
-                    returnArray[9]++;
-                    position = 9;
+                    position = 12;
                 }
-                if (current.hasHeard(title))
+                if (current.getResponseHeard() != 2)
                 {
-                    returnArray[position + 1]++;
+                    returnArray[position]++;
+                    if (current.getResponseHeard() == 0)
+                    {
+                        returnArray[position + 1]++;
+                    }
                 }
-                if (current.doesLike(title))
+                if (current.getResponseLiked() != 2)
                 {
                     returnArray[position + 2]++;
+                    if (current.getResponseLiked() == 0)
+                    {
+                        returnArray[position + 3]++;
+                    }
                 }
             }
             
@@ -89,67 +93,75 @@ public class StudentCollection extends LinkedList<Student>
                 String curMajor = current.getMajor();
                 if (curMajor.equals("Computer Science"))
                 {
-                    returnArray[0]++;
                     position = 0;
                 }
                 else if (curMajor.equals("Other Engineering"))
                 {
-                    returnArray[3]++;
-                    position = 3;
+                    position = 4;
                 }
                 else if (curMajor.equals("Math or CMDA"))
                 {
-                    returnArray[6]++;
-                    position = 6;
+                    position = 8;
                 }
                 else
                 {
-                    returnArray[9]++;
-                    position = 9;
+                    position = 12;
                 }
-                if (current.hasHeard(title))
+                if (current.getResponseHeard() != 2)
                 {
-                    returnArray[position + 1]++;
+                    returnArray[position]++;
+                    if (current.getResponseHeard() == 0)
+                    {
+                        returnArray[position + 1]++;
+                    }
                 }
-                if (current.doesLike(title))
+                if (current.getResponseLiked() != 2)
                 {
                     returnArray[position + 2]++;
+                    if (current.getResponseLiked() == 0)
+                    {
+                        returnArray[position + 3]++;
+                    }
                 }
             }
 			break;
 		case REGION:
 		    while (iter.hasNext())
             {
-                Student current = iter.next();
+		        Student current = iter.next();
                 int position = 0;
                 String curRegion = current.getRegion();
                 if (curRegion.equals("Northeast"))
                 {
-                    returnArray[0]++;
                     position = 0;
                 }
                 else if (curRegion.equals("Southeast"))
                 {
-                    returnArray[3]++;
-                    position = 3;
+                    position = 4;
                 }
                 else if (curRegion.equals("United States (other than Southeast or Northwest)"))
                 {
-                    returnArray[6]++;
-                    position = 6;
+                    position = 8;
                 }
                 else
                 {
-                    returnArray[9]++;
-                    position = 9;
+                    position = 12;
                 }
-                if (current.hasHeard(title))
+                if (current.getResponseHeard() != 2)
                 {
-                    returnArray[position + 1]++;
+                    returnArray[position]++;
+                    if (current.getResponseHeard() == 0)
+                    {
+                        returnArray[position + 1]++;
+                    }
                 }
-                if (current.doesLike(title))
+                if (current.getResponseLiked() != 2)
                 {
                     returnArray[position + 2]++;
+                    if (current.getResponseLiked() == 0)
+                    {
+                        returnArray[position + 3]++;
+                    }
                 }
             }
 			break;
