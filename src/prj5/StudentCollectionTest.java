@@ -9,7 +9,7 @@ import student.TestCase;
  * @version 2016.11.13
  */
 public class StudentCollectionTest extends TestCase {
-    
+
     private StudentCollection collection;
     private Student student1;
     private Student student2;
@@ -20,7 +20,7 @@ public class StudentCollectionTest extends TestCase {
     private Student student7;
     private Student student8;
 
-    
+
     /**
      * Called upon before each test method is called. Instantiates
      * a new StudentCollection class along with 4 students, adds 
@@ -54,7 +54,7 @@ public class StudentCollectionTest extends TestCase {
         collection.add(student7);
         collection.add(student8);
     }
-    
+
     /**
      * Tests heardAndLikedAccordingTo() when the Hobby enum is the parameter.
      */
@@ -65,7 +65,7 @@ public class StudentCollectionTest extends TestCase {
             assertEquals(expectedHobby[i], testArray[i]);
         }
     }
-    
+
     /**
      * Tests heardAndLikedAccordingTo() when the Major enum is the parameter.
      */
@@ -76,7 +76,7 @@ public class StudentCollectionTest extends TestCase {
             assertEquals(expectedMajor[i], testArray[i]);
         }
     }
-    
+
     /**
      * Tests heardAndLikedAccordingTo() when the Region enum is the parameter.
      */

@@ -14,7 +14,7 @@ public class Student {
     private String hobby;
     private String region;
     private HashMap<String, Integer[]> songInfo;
-    
+
     /**
      * The constructor for this class that takes the parameters 
      * and stores them in the field variables.
@@ -28,7 +28,7 @@ public class Student {
         this.hobby = hobby;
         songInfo = new HashMap<String, Integer[]>();
     }
-    
+
     /**
      * Getter method for students major
      * @return the students major
@@ -36,7 +36,7 @@ public class Student {
     public String getMajor() {
         return major;
     }
-    
+
     /**
      * Getter method for the students hobby
      * @return the students hobby
@@ -44,7 +44,7 @@ public class Student {
     public String getHobby() {
         return hobby;
     }
-    
+
     /**
      * Getter method for the students region
      * @return the students region of residence
@@ -52,7 +52,7 @@ public class Student {
     public String getRegion() {
         return region;
     }
-    
+
     /**
      * Adds the song to the map of songs the student has information on
      * @param heard 0 if heard, 1 if not, 2 if no response
@@ -61,7 +61,7 @@ public class Student {
     public void addSong(String song, int heard, int liked) {
         songInfo.put(song, new Integer[] {heard, liked});
     }
-    
+
     /**
      * Checks to see if a song has been heard by this Student.
      * @param song The song to be checked if the student has heard. 
@@ -71,7 +71,7 @@ public class Student {
     public int getResponseHeard(String song) {
         return songInfo.get(song)[0];
     }
-    
+
     /**
      * Checks to see if a song was liked by the Student
      * @param song The song to be checked if the student likes.

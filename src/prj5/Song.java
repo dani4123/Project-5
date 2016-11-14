@@ -8,7 +8,7 @@ package prj5;
  * Each song has the following information: Title, Genre, Artist and Year.
  */
 public class Song {
-    
+
     private String title;
     private String genre;
     private String artist;
@@ -19,7 +19,7 @@ public class Song {
      */
     public static final int statArraySize = 16;
     private StudentCollection studentCollection;
-    
+
     /**
      * Default Constructor
      * 
@@ -39,7 +39,7 @@ public class Song {
         this.studentCollection = studentCollection;
         this.statArray = new int[statArraySize];
     }
-    
+
     /**
      * Getter method for title field
      * @return title
@@ -48,7 +48,7 @@ public class Song {
     {
         return title;
     }
-    
+
     /**
      * Getter method for genre field
      * @return field
@@ -57,7 +57,7 @@ public class Song {
     {
         return genre;
     }
-    
+
     /**
      * Getter method for artist field
      * @return artist
@@ -66,7 +66,7 @@ public class Song {
     {
         return artist;
     }
-    
+
     /**
      * Getter method for year field
      * @return year
@@ -75,7 +75,7 @@ public class Song {
     {
         return year;
     }
-    
+
     /**
      * Getter method for statArray field
      * @return statArray
@@ -84,7 +84,7 @@ public class Song {
     {
         return statArray;
     }
-    
+
     /**
      * Writes to statArray
      * @param rEnum Which category to write for
