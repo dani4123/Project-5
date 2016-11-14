@@ -61,6 +61,7 @@ public class GUIWindow {
     {
         private Song song;
         private SongPropertyEnum songInfo;
+        private static final int sizeMultiplier = 10;
         
         private Shape firstHeard;
         private Shape firstLiked;
@@ -80,6 +81,9 @@ public class GUIWindow {
         public SongGraphic(Song theSong, SongPropertyEnum sortedBy)
         {
             song = theSong;
+            songInfo = sortedBy;
+            
+            
         }
     }
 }
