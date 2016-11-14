@@ -73,8 +73,10 @@ public class StudentCollection extends LinkedList<Student>
 					    returnArray[6]++;
                         position = 7;
 					}
+					System.out.println(" before here");
 					if (current.doesLike(title))
 					{
+					    System.out.println("here");
 						returnArray[position]++;
 					}
 				}

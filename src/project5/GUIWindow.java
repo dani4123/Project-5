@@ -52,8 +52,8 @@ public class GUIWindow {
         }
         window = new Window("Music Preference Visualization");
         quitButton = new Button("Quit");
-        nextButton = new Button("Next ¡æ");
-        previousButton = new Button("¡ç Prev");
+        nextButton = new Button("Next ï¿½ï¿½");
+        previousButton = new Button("ï¿½ï¿½ Prev");
         sortByArtist = new Button("Sort By Artist Name");
         sortByTitle = new Button("Sort By Song Title");
         sortByDate = new Button("Sort By Release Year");
