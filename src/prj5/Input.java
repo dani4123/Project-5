@@ -11,6 +11,11 @@ import java.util.Scanner;
 /**
  * @author JulianNguyen
  * @version 11/13/16
+ * 
+ * 
+ * fixed output problem
+ * @author Jooyoung Whang (joo918)
+ * @version 11/14/16
  */
 public class Input {
 
@@ -52,7 +57,7 @@ public class Input {
         }
         else
         {
-            new Input("MusicSurveyData.csv", "SongList.csv");
+            new Input("Input/MusicSurveyData.csv", "Input/SongList.csv");
         }
     }
 
@@ -115,9 +120,117 @@ public class Input {
                 }
             }
         }
+        
         scanner.close();
+
+        outputAs(RepresentationEnum.HOBBY, SongPropertyEnum.GENRE);
+        outputAs(RepresentationEnum.HOBBY, SongPropertyEnum.TITLE);
     }
 
+    public void outputAs(RepresentationEnum rep, SongPropertyEnum prop)
+    {
+        this.songCollection.changeRepresentationEnum(rep);
+        this.songCollection.sort(prop);
+        Iterator<Song> outputIter = this.songCollection.iterator();
+        while (outputIter.hasNext())
+        {
+            Song currentOutput = outputIter.next();
+            System.out.println("song title " + currentOutput.getTitle());
+            System.out.println("song artist " + currentOutput.getArtist());
+            System.out.println("song genre " + currentOutput.getGenre());
+            System.out.println("song year " + currentOutput.getYear());
+            System.out.println("heard");
+            int[] statsTotal = new int[4];
+            int[] stats = currentOutput.getStatArray();
+            Iterator<Student> surveyer = this.studentCollection.iterator();
+            while (surveyer.hasNext())
+            {
+                Student curStudent = surveyer.next();
+                String curRep;
+                switch (rep)
+                {
+                case HOBBY:
+                    curRep = curStudent.getHobby();
+                    if (curRep.equals("reading"))
+                    {
+                        statsTotal[0]++;
+                    }
+                    else if (curRep.equals("art"))
+                    {
+                        statsTotal[1]++;
+                    }
+                    else if (curRep.equals("sports"))
+                    {
+                        statsTotal[2]++;
+                    }
+                    else
+                    {
+                        statsTotal[3]++;
+                    }
+                    break;
+                case MAJOR:
+                    curRep = curStudent.getMajor();
+                    if (curRep.equals("Computer Science"))
+                    {
+                        statsTotal[0]++;
+                    }
+                    else if (curRep.equals("Other Engineering"))
+                    {
+                        statsTotal[1]++;
+                    }
+                    else if (curRep.equals("Math or CMDA"))
+                    {
+                        statsTotal[2]++;
+                    }
+                    else
+                    {
+                        statsTotal[3]++;
+                    }
+                    break;
+                case REGION:
+                    curRep = curStudent.getRegion();
+                    if (curRep.equals("Northeast"))
+                    {
+                        statsTotal[0]++;
+                    }
+                    else if (curRep.equals("Southeast"))
+                    {
+                        statsTotal[1]++;
+                    }
+                    else if (curRep.equals("United States (other than Southeast or Northwest)"))
+                    {
+                        statsTotal[2]++;
+                    }
+                    else
+                    {
+                        statsTotal[3]++;
+                    }
+                    break;
+                }
+            }
+            System.out.println("stats - " + stats[0] + " " + stats[1]);
+            int[] outputPerc = new int[8];
+            for (int i = 0 ; i < 4 ; i++)
+            {
+                if (stats[i * 2] == 0)
+                {
+                    outputPerc[i * 2] = 0;
+                    outputPerc[i * 2 + 1] = 0;
+                }
+                else
+                {
+                    outputPerc[i * 2] = stats[i * 2] / statsTotal[i] * 100;
+                    outputPerc[i * 2 + 1] = stats[i * 2 + 1] / stats[i * 2] * 100;
+                }
+            }
+            System.out.printf("reading%d art%d sports%d music%d\n", outputPerc[0],
+                                outputPerc[2], outputPerc[4], outputPerc[6]);
+            System.out.println("likes");
+            System.out.printf("reading%d art%d sports%d music%d\n", outputPerc[1],
+                                outputPerc[3], outputPerc[5], outputPerc[7]);
+        }
+    }
+    
     /**
      * Read in songs from input file
      * and add to SongCollection

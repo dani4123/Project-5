@@ -292,8 +292,8 @@ public class LinkedList<E> implements ListInterface<E> {
     }
     
     /**
-     * inserts an element to the specific position,
-     * but only if it is strictly smaller than the
+     * inserts an element to a specific position
+     * if it is strictly smaller than the
      * original element at the position according
      * to the comparator
      * 

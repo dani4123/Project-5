@@ -17,7 +17,7 @@ public class Song {
     /**
      * Set capacity of statArray. 
      */
-    public static final int statArraySize = 8;
+    public static final int statArraySize = 12;
     private StudentCollection studentCollection;
     
     /**
