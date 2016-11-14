@@ -84,4 +84,16 @@ public class StudentCollectionTest extends TestCase {
             assertEquals(expectedRegion[i], testArray[i]);
         }
     }
+    
+    /**
+     * Tests heardAndLikedAccordingTo() when the Default enum is the parameter.
+     */
+    public void testHeardAndLikedAccordingTo() {
+        int[] expected = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] testArray = collection.heardAndLikedAccordingTo("Work", 
+                RepresentationEnum.DEFAULT);
+        for (int i = 0; i < 16; i++) {
+            assertEquals(expected[i], testArray[i]);
+        }
+    }
 }

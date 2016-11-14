@@ -8,5 +8,5 @@ public enum RepresentationEnum {
      * Region: Northeast, Southeast, United States (other than Southeast or Northwest),
      *         Outside of United States
      */
-    HOBBY, MAJOR, REGION;
+    HOBBY, MAJOR, REGION, DEFAULT;
 }
