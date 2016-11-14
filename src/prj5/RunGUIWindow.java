@@ -4,6 +4,7 @@ package prj5;
  * class used to test window layout
  * 
  * @author Jooyoung Whang (joo918)
+ * @version 11.13.16
  *
  */
 public class RunGUIWindow {
@@ -15,6 +16,6 @@ public class RunGUIWindow {
      */
     public static void main(String[] args)
     {
-        GUIWindow gui = new GUIWindow(null);
+        new GUIWindow(null);
     }
 }

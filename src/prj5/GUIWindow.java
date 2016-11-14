@@ -8,6 +8,13 @@ import CS2114.TextShape;
 import CS2114.Window;
 import CS2114.WindowSide;
 
+/**
+ * 
+ * @author Jooyoung Whang (joo918)
+ * @param songs 
+ * @param students
+ */
+
 public class GUIWindow {
 
     private SongCollection songcollection;
@@ -35,12 +42,6 @@ public class GUIWindow {
     
     private SongGraphic[] currentShown;
     
-    /**
-     * 
-     * @author Jooyoung Whang (joo918)
-     * @param songs 
-     * @param students
-     */
     public GUIWindow(Input filereader)
     {
         if (filereader != null)
