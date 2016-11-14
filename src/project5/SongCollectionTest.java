@@ -17,13 +17,13 @@ public class SongCollectionTest extends TestCase {
     
     public void setUp() {
         collection = new SongCollection();
-        startSong = new Song("Famous", "Rap", "Kanye", 2016, null);
+        startSong = new Song("Famous", "Kanye", "2016", "Rap", null);
         collection.add(startSong);
         for (int i = 1; i < 26; i++) {
-            song = new Song("Song" + i, "Random", "Various", i, null);
+            song = new Song("Song" + i, "Various", Integer.toString(i) , "Random", null);
             collection.add(song);
         }
-        endSong = new Song("Waves", "Rap", "Kanye", 2016, null);
+        endSong = new Song("Waves", "Kanye", "2016", "Rap", null);
         collection.add(endSong);
     }
     
@@ -41,7 +41,6 @@ public class SongCollectionTest extends TestCase {
     
     public void testChangeRepresentationEnum() {
         int[] testArray;
-        
     }
     
     public void testSort() {
