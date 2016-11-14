@@ -1,5 +1,4 @@
 package prj5;
-import java.lang.reflect.Array;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -299,14 +298,5 @@ public class LinkedList<E> implements ListInterface<E> {
             tempNode.data = data;
             currentNode = currentNode.next();
         }
-    }
-    
-    /**
-     * Return the size field
-     * @return size
-     */
-    public int getSize()
-    {
-        return this.size;
     }
 }

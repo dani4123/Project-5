@@ -82,6 +82,10 @@ public class SongCollectionTest extends TestCase {
         assertEquals(collection.getEntry(25).getTitle(), "Song9");
     }
     
+    /**
+     * Tests that the sort() method when called with the
+     * year parameter sorts the list chronologically by year.
+     */
     public void testSortYear() {
         collection.sort(SongPropertyEnum.YEAR);
         assertEquals(collection.getEntry(25), startSong);
@@ -91,6 +95,10 @@ public class SongCollectionTest extends TestCase {
         assertEquals(collection.getEntry(24).getTitle(), "Song25");
     }
     
+    /**
+     * Tests that the sort() method when called with the
+     * genre parameter sorts the list alphabetically by genre.
+     */
     public void testSortGenre() {
         collection.sort(SongPropertyEnum.GENRE);
         assertEquals(collection.getEntry(25), startSong);
