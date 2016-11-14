@@ -1,7 +1,7 @@
 /**
  * 
  */
-package project5;
+package prj5;
 
 import student.TestCase;
 /**
