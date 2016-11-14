@@ -31,7 +31,7 @@ public class StudentCollection extends LinkedList<Student>
 	 * 4 - 3rd category heard
 	 * 5 - 3rd category liked
 	 * 6 - 4th category heard
-	 * 7 - 5th category liked
+	 * 7 - 4th category liked
 	 * 
 	 * @param title song's title
 	 * @param rep representation type
