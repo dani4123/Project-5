@@ -29,6 +29,7 @@ public class GUIWindow {
     private static final int WINDOW_HEIGHT = 720;
     private static final int LEGEND_WIDTH = 220;
     private static final int LEGEND_HEIGHT = 400;
+    private static final int LEGEND_TEXT_GAP = 20;
     
     private TextShape[] legendText;
     
@@ -52,8 +53,8 @@ public class GUIWindow {
         }
         window = new Window("Music Preference Visualization");
         quitButton = new Button("Quit");
-        nextButton = new Button("Next ��");
-        previousButton = new Button("�� Prev");
+        nextButton = new Button("Next ->");
+        previousButton = new Button("<- Prev");
         sortByArtist = new Button("Sort By Artist Name");
         sortByTitle = new Button("Sort By Song Title");
         sortByDate = new Button("Sort By Release Year");
@@ -84,7 +85,14 @@ public class GUIWindow {
         legendBox.setForegroundColor(Color.BLACK);
         window.addShape(legendBox);
         
-        legendText = setUpLegend(RepresentationEnum.HOBBY);
+        setUpLegend(RepresentationEnum.HOBBY);
+        
+        TextShape songtitle = new TextShape(0, 0, "Song Title");
+        songtitle.setBackgroundColor(null);
+        songtitle.setX(WINDOW_WIDTH - LEGEND_WIDTH / 2);
+        songtitle.setY(WINDOW_HEIGHT - LEGEND_HEIGHT + 6 * LEGEND_TEXT_GAP);
+        window.addShape(songtitle);
+        window.moveToFront(songtitle);
         
         StudentCollection studentCol = new StudentCollection();
         Student dude1 = new Student("Computer Science", "Northeast", "reading");
@@ -108,20 +116,41 @@ public class GUIWindow {
         sg.addToWindow(window);
     }
     
-    public TextShape[] setUpLegend(RepresentationEnum re)
+    public void setUpLegend(RepresentationEnum re)
     {
         TextShape[] returnText = new TextShape[5];
         switch (re)
         {
         case HOBBY:
-            
+            returnText[0] = new TextShape(0, 0, "Hobby Legend");
+            returnText[1] = new TextShape(0, 0, "Read", Color.MAGENTA);
+            returnText[2] = new TextShape(0, 0, "Art", Color.BLUE);
+            returnText[3] = new TextShape(0, 0, "Sports", Color.ORANGE);
+            returnText[4] = new TextShape(0, 0, "Music", Color.GREEN);
             break;
         case MAJOR:
-            
+            returnText[0] = new TextShape(0, 0, "Major Legend");
+            returnText[1] = new TextShape(0, 0, "Comp Sci", Color.MAGENTA);
+            returnText[2] = new TextShape(0, 0, "Other Eng", Color.BLUE);
+            returnText[3] = new TextShape(0, 0, "Math/CMDA", Color.ORANGE);
+            returnText[4] = new TextShape(0, 0, "Other", Color.GREEN);
             break;
         case REGION:
-            
+            returnText[0] = new TextShape(0, 0, "Region Legend");
+            returnText[1] = new TextShape(0, 0, "NE", Color.MAGENTA);
+            returnText[2] = new TextShape(0, 0, "SE", Color.BLUE);
+            returnText[3] = new TextShape(0, 0, "Other US", Color.ORANGE);
+            returnText[4] = new TextShape(0, 0, "Outside US", Color.GREEN);
             break;
+        }
+        for (int i = 0 ; i < 5 ; i++)
+        {
+            returnText[i].setBackgroundColor(null);
+            returnText[i].setX(WINDOW_WIDTH - LEGEND_WIDTH + LEGEND_TEXT_GAP / 2);
+            returnText[i].setY(WINDOW_HEIGHT - LEGEND_HEIGHT + i * LEGEND_TEXT_GAP +
+                                LEGEND_TEXT_GAP / 2);
+            window.addShape(returnText[i]);
+            window.moveToFront(returnText[i]);
         }
     }
     
@@ -157,17 +186,17 @@ public class GUIWindow {
             int[] info = song.getStatArray();
             divider = new Shape(x, y, graphThickness / 2, graphThickness * 4, Color.BLACK);
             firstHeard = new Shape(x - info[0] * sizeMultiplier, y,
-                                    info[0] * sizeMultiplier, graphThickness, Color.PINK);
+                                    info[0] * sizeMultiplier, graphThickness, Color.MAGENTA);
             firstLiked = new Shape(x + graphThickness / 2, y,
-                                    info[1] * sizeMultiplier, graphThickness, Color.PINK);
+                                    info[1] * sizeMultiplier, graphThickness, Color.MAGENTA);
             secondHeard = new Shape(x - info[2] * sizeMultiplier, y + graphThickness,
                                     info[2] * sizeMultiplier, graphThickness, Color.BLUE);
             secondLiked = new Shape(x + graphThickness / 2, y + graphThickness,
                                     info[3] * sizeMultiplier, graphThickness, Color.BLUE);
             thirdHeard = new Shape(x - info[4] * sizeMultiplier, y + graphThickness * 2,
-                                    info[4] * sizeMultiplier, graphThickness, Color.YELLOW);
+                                    info[4] * sizeMultiplier, graphThickness, Color.ORANGE);
             thirdLiked = new Shape(x + graphThickness / 2, y + graphThickness * 2,
-                                    info[5] * sizeMultiplier, graphThickness, Color.YELLOW);
+                                    info[5] * sizeMultiplier, graphThickness, Color.ORANGE);
             fourthHeard = new Shape(x - info[6] * sizeMultiplier, y + graphThickness * 3,
                                     info[6] * sizeMultiplier, graphThickness, Color.GREEN);
             fourthLiked = new Shape(x + graphThickness / 2, y + graphThickness * 3,
