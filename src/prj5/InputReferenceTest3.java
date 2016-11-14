@@ -22,7 +22,7 @@ public class InputReferenceTest3 extends student.TestCase {
         fileData = null;
     }
 
-    
+
     /**
      * Test the program with the class survey data from 6 students about only
      * 1 song.
@@ -32,9 +32,9 @@ public class InputReferenceTest3 extends student.TestCase {
      */
     @Hint("main working properly with MusicSurveyDataTest2, SongListTest2")
     public void testMain2() throws IOException {
-        
+
         Input.main(new String[] { "Input/MusicSurveyDataTest2.csv",
-            "Input/SongListTest2.csv" });
+        "Input/SongListTest2.csv" });
 
         fileName = "Input/Output2TitleGenreHobby.txt";
 
@@ -61,8 +61,8 @@ public class InputReferenceTest3 extends student.TestCase {
 
     }
 
-    
-    
+
+
     /**
      * Test the program with the class survey data from 6 students about only
      * 5 songs.
@@ -71,12 +71,12 @@ public class InputReferenceTest3 extends student.TestCase {
      * 
      */
     @Hint("The main method is not working properly with input files " +
-          "MusicSurveyDataTest1.csv and SongListTest1.csv")
+            "MusicSurveyDataTest1.csv and SongListTest1.csv")
     public void testMain1() throws IOException{
 
         // Notice need to pass in an array of the parameters
         Input.main(new String[] { "Input/MusicSurveyDataTest1.csv",
-            "Input/SongListTest1.csv" });
+        "Input/SongListTest1.csv" });
 
         fileName = "Input/Output1TitleGenreHobby.txt";
         String output1TitleGenreHobby = "";
@@ -101,7 +101,7 @@ public class InputReferenceTest3 extends student.TestCase {
                 output1TitleGenreHobby, systemOut().getHistory());
     }
 
-   
+
     /**
      * Test the program with the actual class survey data
      * Gathers the output from StdOut and compares it to
@@ -113,7 +113,7 @@ public class InputReferenceTest3 extends student.TestCase {
     public void testMain3() throws IOException {
 
         Input.main(new String[] { "Input/MusicSurveyDataNoGenreRepeats.csv", 
-                "Input/SongListNoGenreRepeats.csv" });
+        "Input/SongListNoGenreRepeats.csv" });
 
         fileName = "Input/Output3TitleGenreHobby.txt";
 

@@ -14,7 +14,7 @@ import list.ListInterface;
  * @param <E> The type of data to be stored in the list.
  */
 public class LinkedList<E> implements ListInterface<E> {
-    
+
     private static class Node<E> {
         private Node<E> next;
         private Node<E> previous;
@@ -60,7 +60,7 @@ public class LinkedList<E> implements ListInterface<E> {
         size = 0;
     }
 
-     /** Adds the element at the end of the linked list.
+    /** Adds the element at the end of the linked list.
      * @param anEntry the element to be added to the list
      * @return True if it was added.
      * @throws IllegalArgumentException if anEntry is null.
@@ -114,7 +114,7 @@ public class LinkedList<E> implements ListInterface<E> {
         }
         return current;
     }
-    
+
     /**
      * Removes the Node at the specified index and returns its data.
      * @param index The index where the Node should be removed
@@ -239,10 +239,10 @@ public class LinkedList<E> implements ListInterface<E> {
     public Iterator<E> iterator() {
         return new LinkedListIterator<E>();
     }
-    
+
     @SuppressWarnings("hiding")
     private class LinkedListIterator<E> implements Iterator<E> {
-        
+
         private Node<E> currentNode;
 
         /**
@@ -278,7 +278,7 @@ public class LinkedList<E> implements ListInterface<E> {
             }
         }
     }
-    
+
     /**
      * insertion sort according to
      * the specified comparator

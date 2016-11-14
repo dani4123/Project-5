@@ -13,7 +13,7 @@ public class CompareTest extends TestCase {
 
     private Song song1;
     private Song song2;
-    
+
     /**
      * Called upon before each test method is called.
      */
@@ -21,7 +21,7 @@ public class CompareTest extends TestCase {
         song1 = new Song("Time", "Pink Floyd", "1974", "Rock", null);
         song2 = new Song("Floats my Boat", "Aer", "2009", "Rap", null);
     }
-    
+
     /**
      * Tests compare by artist.
      */
@@ -29,7 +29,7 @@ public class CompareTest extends TestCase {
         CompareByArtist compare = new CompareByArtist();
         assertEquals(compare.compare(song1, song2), 15);
     }
-    
+
     /**
      * Tests compare by genre.
      */
@@ -37,7 +37,7 @@ public class CompareTest extends TestCase {
         CompareByGenre compare = new CompareByGenre();
         assertEquals(compare.compare(song1, song2), 14);
     }
-    
+
     /**
      * Tests compare by title.
      */
@@ -45,7 +45,7 @@ public class CompareTest extends TestCase {
         CompareByTitle compare = new CompareByTitle();
         assertEquals(compare.compare(song1, song2), 14);
     }
-    
+
     /**
      * Tests compare by year.
      */

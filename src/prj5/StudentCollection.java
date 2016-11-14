@@ -47,7 +47,7 @@ public class StudentCollection extends LinkedList<Student>
     {
         Iterator<Student> iter = iterator();
         int[] returnArray = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        
+
         switch (rep)
         {
         case HOBBY:
@@ -89,7 +89,7 @@ public class StudentCollection extends LinkedList<Student>
                     }
                 }
             }
-            
+
             break;
         case MAJOR:
             while (iter.hasNext())
@@ -130,11 +130,11 @@ public class StudentCollection extends LinkedList<Student>
                     }
                 }
             }
-			break;
-		case REGION:
-		    while (iter.hasNext())
+            break;
+        case REGION:
+            while (iter.hasNext())
             {
-		        Student current = iter.next();
+                Student current = iter.next();
                 int position = 0;
                 String curRegion = current.getRegion();
                 if (curRegion.equals("Northeast"))
@@ -170,8 +170,8 @@ public class StudentCollection extends LinkedList<Student>
                     }
                 }
             }
-			break;
-		}
-		return returnArray;
-	}
+            break;
+        }
+        return returnArray;
+    }
 }

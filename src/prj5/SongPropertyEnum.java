@@ -2,5 +2,5 @@ package prj5;
 
 public enum SongPropertyEnum {
 
-	ARTIST, TITLE, YEAR, GENRE;
+    ARTIST, TITLE, YEAR, GENRE;
 }
