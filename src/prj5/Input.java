@@ -9,6 +9,8 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 /**
+ * reads from data to initialize songCollection and studentCollection
+ * intermediate submission only: outputs to system for tests
  * @author JulianNguyen
  * @version 11/13/16
  * 
@@ -61,6 +63,15 @@ public class Input {
         }
     }
 
+    /**
+     * reads poll data from students
+     * each students save data for each students
+     * with and integer, values 0~2 indicating
+     * 0:yes 1:no 2:no response
+     * 
+     * @param studentData   url of the poll data
+     * @throws IOException  if file reading fails
+     */
     public void readInStudentData(String studentData) throws IOException
     {
         Scanner scanner = new Scanner(new File(studentData));
@@ -160,6 +171,15 @@ public class Input {
         outputAs(RepresentationEnum.HOBBY, SongPropertyEnum.TITLE);
     }
 
+    /**
+     * ONLY FOR INTERMEDIATE SUBMISSION
+     * 
+     * outputs to System according to Representating style and
+     * Song Property
+     * 
+     * @param rep   representation
+     * @param prop  song property
+     */
     public void outputAs(RepresentationEnum rep, SongPropertyEnum prop)
     {
         this.songCollection.changeRepresentationEnum(rep);
@@ -175,23 +195,29 @@ public class Input {
             System.out.println("heard");
             int[] stats = currentOutput.getStatArray();
             int[] outputPerc = new int[12];
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0 ; i < 12 ; i++)
+            /*StringBuilder sb = new StringBuilder();
+            for (int i = 0 ; i < 16 ; i++)
             {
                 sb.append(stats[i] + " ");
             }
-            System.out.println(sb);
+            System.out.println(sb);*/
             for (int i = 0 ; i < 4 ; i++)
             {
-                if (stats[i * 4] == 0)
+                if (stats[i * 4 + 1] == 0)
                 {
                     outputPerc[i * 2] = 0;
-                    outputPerc[i * 2 + 1] = 0;
                 }
                 else
                 {
                     outputPerc[i * 2] = (int) ((double) stats[i * 4 + 1] / stats[i * 4] * 100);
-                    outputPerc[i * 2 + 1] = (int) ((double) stats[i * 4 + 2] / stats[i * 4 + 3] * 100);
+                }
+                if (stats[i * 4 + 3] == 0)
+                {
+                    outputPerc[i * 2 + 1] = 0;
+                }
+                else
+                {
+                    outputPerc[i * 2 + 1] = (int) ((double) stats[i * 4 + 3] / stats[i * 4 + 2] * 100);
                 }
             }
             System.out.printf("reading%d art%d sports%d music%d\n", outputPerc[0],

@@ -119,13 +119,13 @@ public class GUIWindow {
         
         StudentCollection studentCol = new StudentCollection();
         Student dude1 = new Student("Computer Science", "Northeast", "reading");
-        dude1.addSongHeard("Default", true);
+        dude1.addSong("Default", 0, 0);
         Student dude2 = new Student("Computer Science", "Northeast", "art");
-        dude2.addSongHeard("Default", true);
+        dude2.addSong("Default", 0, 0);
         Student dude3 = new Student("Computer Science", "Northeast", "sports");
-        dude3.addSongHeard("Default", true);
+        dude3.addSong("Default", 0, 0);
         Student dude4 = new Student("Computer Science", "Northeast", "music");
-        dude4.addSongHeard("Default", true);
+        dude4.addSong("Default", 0, 0);
         for (int i = 0 ; i < 100 ; i++)
         {
             studentCol.add(dude1);
