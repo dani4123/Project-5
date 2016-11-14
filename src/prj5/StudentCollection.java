@@ -50,128 +50,130 @@ public class StudentCollection extends LinkedList<Student>
 
         switch (rep)
         {
-        case HOBBY:
-            while (iter.hasNext())
-            {
-                Student current = iter.next();
-                int position = 0;
-                String curHobby = current.getHobby();
-                if (curHobby.equals("reading"))
+            case HOBBY:
+                while (iter.hasNext())
                 {
-                    position = 0;
-                }
-                else if (curHobby.equals("art"))
-                {
-                    position = 4;
-                }
-                else if (curHobby.equals("sports"))
-                {
-                    position = 8;
-                }
-                else
-                {
-                    position = 12;
-                }
-                if (current.getResponseHeard(title) != 2)
-                {
-                    returnArray[position]++;
-                    if (current.getResponseHeard(title) == 0)
+                    Student current = iter.next();
+                    int position = 0;
+                    String curHobby = current.getHobby();
+                    if (curHobby.equals("reading"))
                     {
-                        returnArray[position + 1]++;
+                        position = 0;
+                    }
+                    else if (curHobby.equals("art"))
+                    {
+                        position = 4;
+                    }
+                    else if (curHobby.equals("sports"))
+                    {
+                        position = 8;
+                    }
+                    else
+                    {
+                        position = 12;
+                    }
+                    if (current.getResponseHeard(title) != 2)
+                    {
+                        returnArray[position]++;
+                        if (current.getResponseHeard(title) == 0)
+                        {
+                            returnArray[position + 1]++;
+                        }
+                    }
+                    if (current.getResponseLiked(title) != 2)
+                    {
+                        returnArray[position + 2]++;
+                        if (current.getResponseLiked(title) == 0)
+                        {
+                            returnArray[position + 3]++;
+                        }
                     }
                 }
-                if (current.getResponseLiked(title) != 2)
+    
+                break;
+            case MAJOR:
+                while (iter.hasNext())
                 {
-                    returnArray[position + 2]++;
-                    if (current.getResponseLiked(title) == 0)
+                    Student current = iter.next();
+                    int position = 0;
+                    String curMajor = current.getMajor();
+                    if (curMajor.equals("Computer Science"))
                     {
-                        returnArray[position + 3]++;
+                        position = 0;
+                    }
+                    else if (curMajor.equals("Other Engineering"))
+                    {
+                        position = 4;
+                    }
+                    else if (curMajor.equals("Math or CMDA"))
+                    {
+                        position = 8;
+                    }
+                    else
+                    {
+                        position = 12;
+                    }
+                    if (current.getResponseHeard(title) != 2)
+                    {
+                        returnArray[position]++;
+                        if (current.getResponseHeard(title) == 0)
+                        {
+                            returnArray[position + 1]++;
+                        }
+                    }
+                    if (current.getResponseLiked(title) != 2)
+                    {
+                        returnArray[position + 2]++;
+                        if (current.getResponseLiked(title) == 0)
+                        {
+                            returnArray[position + 3]++;
+                        }
                     }
                 }
+                break;
+            case REGION:
+                while (iter.hasNext())
+                {
+                    Student current = iter.next();
+                    int position = 0;
+                    String curRegion = current.getRegion();
+                    if (curRegion.equals("Northeast"))
+                    {
+                        position = 0;
+                    }
+                    else if (curRegion.equals("Southeast"))
+                    {
+                        position = 4;
+                    }
+                    else if (curRegion.equals("United States (other than Southeast or Northwest)"))
+                    {
+                        position = 8;
+                    }
+                    else
+                    {
+                        position = 12;
+                    }
+                    if (current.getResponseHeard(title) != 2)
+                    {
+                        returnArray[position]++;
+                        if (current.getResponseHeard(title) == 0)
+                        {
+                            returnArray[position + 1]++;
+                        }
+                    }
+                    if (current.getResponseLiked(title) != 2)
+                    {
+                        returnArray[position + 2]++;
+                        if (current.getResponseLiked(title) == 0)
+                        {
+                            returnArray[position + 3]++;
+                        }
+                    }
+                }
+                break;
+            default:
+                break;
             }
-
-            break;
-        case MAJOR:
-            while (iter.hasNext())
-            {
-                Student current = iter.next();
-                int position = 0;
-                String curMajor = current.getMajor();
-                if (curMajor.equals("Computer Science"))
-                {
-                    position = 0;
-                }
-                else if (curMajor.equals("Other Engineering"))
-                {
-                    position = 4;
-                }
-                else if (curMajor.equals("Math or CMDA"))
-                {
-                    position = 8;
-                }
-                else
-                {
-                    position = 12;
-                }
-                if (current.getResponseHeard(title) != 2)
-                {
-                    returnArray[position]++;
-                    if (current.getResponseHeard(title) == 0)
-                    {
-                        returnArray[position + 1]++;
-                    }
-                }
-                if (current.getResponseLiked(title) != 2)
-                {
-                    returnArray[position + 2]++;
-                    if (current.getResponseLiked(title) == 0)
-                    {
-                        returnArray[position + 3]++;
-                    }
-                }
-            }
-            break;
-        case REGION:
-            while (iter.hasNext())
-            {
-                Student current = iter.next();
-                int position = 0;
-                String curRegion = current.getRegion();
-                if (curRegion.equals("Northeast"))
-                {
-                    position = 0;
-                }
-                else if (curRegion.equals("Southeast"))
-                {
-                    position = 4;
-                }
-                else if (curRegion.equals("United States (other than Southeast or Northwest)"))
-                {
-                    position = 8;
-                }
-                else
-                {
-                    position = 12;
-                }
-                if (current.getResponseHeard(title) != 2)
-                {
-                    returnArray[position]++;
-                    if (current.getResponseHeard(title) == 0)
-                    {
-                        returnArray[position + 1]++;
-                    }
-                }
-                if (current.getResponseLiked(title) != 2)
-                {
-                    returnArray[position + 2]++;
-                    if (current.getResponseLiked(title) == 0)
-                    {
-                        returnArray[position + 3]++;
-                    }
-                }
-            }
-            break;
-        }
         return returnArray;
     }
 }

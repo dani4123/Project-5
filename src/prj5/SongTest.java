@@ -11,25 +11,21 @@ import student.TestCase;
 public class SongTest extends TestCase {
 
     private Song song1;
-    private StudentCollection collection;
-    private Student student1;
-    private Student student2;
-    private Student student3;
-    private Student student4;
 
     /**
      * Called upon before every test method is called.
      */
     public void setUp()
     {
-        collection = new StudentCollection();
-        student1 = new Student("Computer Science", "Northeast", "reading");
+        StudentCollection collection = new StudentCollection();
+        Student student1 = new Student("Computer Science", "Northeast", "reading");
         student1.addSong("Work", 0, 0);
-        student2 = new Student("Other Engineering", "Southeast", "art");
+        Student student2 = new Student("Other Engineering", "Southeast", "art");
         student2.addSong("Work", 1, 1);
-        student3 = new Student("Math or CMDA", "United States (other than Southeast or Northwest)", "sports");
+        Student student3 = new Student("Math or CMDA", 
+            "United States (other than Southeast or Northwest)", "sports");
         student3.addSong("Work", 0, 0);
-        student4 = new Student("Other", "Outside of United States", "music");
+        Student student4 = new Student("Other", "Outside of United States", "music");
         student4.addSong("Work", 1, 1);
         collection.add(student1);
         collection.add(student2);

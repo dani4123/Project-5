@@ -16,7 +16,6 @@ public class SongCollectionTest extends TestCase {
 
     private SongCollection collection;
     private Song startSong;
-    private Song song;
     private Song endSong;
 
     /**
@@ -28,7 +27,7 @@ public class SongCollectionTest extends TestCase {
         startSong = new Song("Famous", "Kanye", "2016", "Rap", null);
         collection.add(startSong);
         for (int i = 1; i < 26; i++) {
-            song = new Song("Song" + i, "Various", Integer.toString(i) , "Random", null);
+            Song song = new Song("Song" + i, "Various", Integer.toString(i) , "Random", null);
             collection.add(song);
         }
         endSong = new Song("Waves", "Kanye", "2016", "Rap", null);
@@ -65,7 +64,8 @@ public class SongCollectionTest extends TestCase {
      */
     public void testChangeRepresentationEnum() {
         StudentCollection sCollection = new StudentCollection();
-        Student student1 = new Student("Computer Science", "Northeast", "reading");
+        Student student1 = new Student("Computer Science", 
+            "Northeast", "reading");
         student1.addSong("Famous", 1, 0);
         student1.addSong("Waves", 0, 2);
         Student student2 = new Student("Other", "Northeast", "sports");
@@ -167,7 +167,7 @@ public class SongCollectionTest extends TestCase {
             assertEquals("Song" + (i + 1), songs[i + 1].getTitle());
         }
         for (int i = 0; i < 5; i++) {
-            song = new Song("Song" + i, "Various", Integer.toString(i) , "Random", null);
+            Song song = new Song("Song" + i, "Various", Integer.toString(i) , "Random", null);
             collection.add(song);
         }
         collection.nextNineSongs();

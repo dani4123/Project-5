@@ -55,6 +55,7 @@ public class Student {
 
     /**
      * Adds the song to the map of songs the student has information on
+     * @param song Song to be added
      * @param heard 0 if heard, 1 if not, 2 if no response
      * @param liked 0 if liked, 1 if not, 2 is no response
      */
