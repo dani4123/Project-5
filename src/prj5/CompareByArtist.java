@@ -23,6 +23,9 @@ public class CompareByArtist implements Comparator<Object> {
 
     /**
      * Compare method for comparator
+     * @param o1 First Object
+     * @param o2 Second object in comparison
+     * @return Results of comparison
      */
     public int compare(Object o1, Object o2) {
         Song song1 = (Song) o1;

@@ -27,7 +27,8 @@ public class SongCollectionTest extends TestCase {
         startSong = new Song("Famous", "Kanye", "2016", "Rap", null);
         collection.add(startSong);
         for (int i = 1; i < 26; i++) {
-            Song song = new Song("Song" + i, "Various", Integer.toString(i) , "Random", null);
+            Song song = new Song("Song" + i, 
+                "Various", Integer.toString(i) , "Random", null);
             collection.add(song);
         }
         endSong = new Song("Waves", "Kanye", "2016", "Rap", null);
@@ -167,7 +168,8 @@ public class SongCollectionTest extends TestCase {
             assertEquals("Song" + (i + 1), songs[i + 1].getTitle());
         }
         for (int i = 0; i < 5; i++) {
-            Song song = new Song("Song" + i, "Various", Integer.toString(i) , "Random", null);
+            Song song = new Song("Song" + i, 
+                "Various", Integer.toString(i) , "Random", null);
             collection.add(song);
         }
         collection.nextNineSongs();

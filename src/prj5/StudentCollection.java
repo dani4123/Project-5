@@ -145,7 +145,8 @@ public class StudentCollection extends LinkedList<Student>
                     {
                         position = 4;
                     }
-                    else if (curRegion.equals("United States (other than Southeast or Northwest)"))
+                    else if (curRegion.equals("United States "
+                        + "(other than Southeast or Northwest)"))
                     {
                         position = 8;
                     }
@@ -173,7 +174,7 @@ public class StudentCollection extends LinkedList<Student>
                 break;
             default:
                 break;
-            }
+        }
         return returnArray;
     }
 }

@@ -21,20 +21,28 @@ public class StudentCollectionTest extends TestCase {
      */
     public void setUp() {
         collection = new StudentCollection();
-        Student student1 = new Student("Computer Science", "Northeast", "reading");
+        Student student1 = new Student("Computer Science", 
+            "Northeast", "reading");
         student1.addSong("Work", 0, 0);
-        Student student2 = new Student("Other Engineering", "Southeast", "art");
+        Student student2 = new Student("Other Engineering", 
+            "Southeast", "art");
         student2.addSong("Work", 1, 1);
         Student student3 = new Student("Math or CMDA", 
-            "United States (other than Southeast or Northwest)", "sports");
+            "United States (other than Southeast or Northwest)", 
+            "sports");
         student3.addSong("Work", 0, 0);
-        Student student4 = new Student("Other", "Outside of United States", "music");
+        Student student4 = new Student("Other", 
+            "Outside of United States", "music");
         student4.addSong("Work", 1, 1);
-        Student student5 = new Student("Computer Science", "Northeast", "reading");
+        Student student5 = new Student("Computer Science", 
+            "Northeast", "reading");
         student5.addSong("Work", 2, 2);
-        Student student6 = new Student("Other Engineering", "Southeast", "art");
+        Student student6 = new Student("Other Engineering", 
+            "Southeast", "art");
         student6.addSong("Work", 2, 2);
-        Student student7 = new Student("Math or CMDA", "United States (other than Southeast or Northwest)", "sports");
+        Student student7 = new Student("Math or CMDA", 
+            "United States (other than Southeast or Northwest)", 
+            "sports");
         student7.addSong("Work", 2, 2);
         Student student8 = new Student("Other", 
             "Outside of United States", "music");

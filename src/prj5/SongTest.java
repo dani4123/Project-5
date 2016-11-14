@@ -18,14 +18,17 @@ public class SongTest extends TestCase {
     public void setUp()
     {
         StudentCollection collection = new StudentCollection();
-        Student student1 = new Student("Computer Science", "Northeast", "reading");
+        Student student1 = new Student("Computer Science", 
+            "Northeast", "reading");
         student1.addSong("Work", 0, 0);
-        Student student2 = new Student("Other Engineering", "Southeast", "art");
+        Student student2 = new Student("Other Engineering", 
+            "Southeast", "art");
         student2.addSong("Work", 1, 1);
         Student student3 = new Student("Math or CMDA", 
             "United States (other than Southeast or Northwest)", "sports");
         student3.addSong("Work", 0, 0);
-        Student student4 = new Student("Other", "Outside of United States", "music");
+        Student student4 = new Student("Other", 
+            "Outside of United States", "music");
         student4.addSong("Work", 1, 1);
         collection.add(student1);
         collection.add(student2);
