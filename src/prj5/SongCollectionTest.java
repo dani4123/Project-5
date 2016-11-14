@@ -83,10 +83,10 @@ public class SongCollectionTest extends TestCase {
         assertEquals(0, song1.getStatArray()[1]);
         assertEquals(1, song1.getStatArray()[2]);
         assertEquals(1, song1.getStatArray()[3]);
-        assertEquals(0, song2.getStatArray()[8]);
-        assertEquals(0, song2.getStatArray()[9]);
-        assertEquals(0, song2.getStatArray()[10]);
-        assertEquals(0, song2.getStatArray()[11]);
+        assertEquals(1, song2.getStatArray()[8]);
+        assertEquals(1, song2.getStatArray()[9]);
+        assertEquals(1, song2.getStatArray()[10]);
+        assertEquals(1, song2.getStatArray()[11]);
     }
     
     /**
