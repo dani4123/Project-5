@@ -87,22 +87,21 @@ public class Input {
         {
             //String of entire line before being split up into specific info
             String[] entireLine = scanner.nextLine().trim().split(",");
-            if (entireLine.length == (songCollection.getLength() * 2 + 4)) 
+            if (entireLine.length < (songCollection.getLength() * 2 + 5)) 
             {
-                dataArray = new String[entireLine.length + 1];
+                dataArray = new String[songCollection.getLength() * 2 + 5];
                 for (int i = 0; i < entireLine.length; i++) 
                 {
                     dataArray[i] = entireLine[i];
                 }
-                dataArray[entireLine.length] = "";
+                for (int i = entireLine.length ; i < dataArray.length ; i++)
+                {
+                    dataArray[i] = "";
+                }
             }
             else 
             {
                 dataArray = entireLine;
-            }
-            if (dataArray.length <= 2) 
-            {
-                continue;
             }
             
             major = dataArray[2];

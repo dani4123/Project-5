@@ -54,7 +54,26 @@ public class SongCollectionTest extends TestCase {
     }
   
     public void testChangeRepresentationEnum() {
-        int[] testArray;
+        StudentCollection sCollection = new StudentCollection();
+        Student student1 = new Student("Computer Science", "Northeast", "reading");
+        student1.addSong("Famous", 1, 0);
+        student1.addSong("Waves", 0, 2);
+        Student student2 = new Student("Other", "Northeast", "sports");
+        student2.addSong("Famous", 2, 2);
+        student2.addSong("Waves", 0, 0);
+        sCollection.add(student1);
+        sCollection.add(student2);
+        collection = new SongCollection();
+        Song song1 = new Song("Famous", "Kanye", "2016", "Rap", sCollection);
+        collection.add(song1);
+        Song song2 = new Song("Waves", "Kanye", "2016", "Rap", sCollection);
+        collection.add(song2);
+        collection.changeRepresentationEnum(RepresentationEnum.HOBBY);
+        assertEquals(1, song1.getStatArray()[0]);
+        assertEquals(0, song1.getStatArray()[1]);
+        assertEquals(1, song1.getStatArray()[2]);
+        assertEquals(1, song1.getStatArray()[3]);
+        
     }
     
     /**
