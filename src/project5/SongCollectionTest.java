@@ -45,8 +45,8 @@ public class SongCollectionTest extends TestCase {
     }
     
     public void testSort() {
-        collection.sort(ARTIST);
-        assertEquals(collection.)
+        collection.sort(SongPropertyEnum.ARTIST);
+        assertEquals(collection.getEntry(0), startSong);
     }
     
     public void testGetNineSongsToShow() {
