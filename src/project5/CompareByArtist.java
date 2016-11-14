@@ -4,8 +4,9 @@ import java.util.Comparator;
 
 /**
  * 
- * @author Jooyoung Whang (joo918)
- *
+ * @author Jooyoung Whang (joo918), Julian Nguyen (julian18)
+ * @version 11/13/16
+ * 
  */
 
 public class CompareByArtist implements Comparator<Object>{

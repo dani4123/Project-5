@@ -5,6 +5,7 @@ package project5;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -17,6 +18,11 @@ public class FileReader {
      * Collection of Songs
      */
     private SongCollection songCollection;
+    
+    /**
+     * Collection of Students
+     */
+    private StudentCollection studentCollection;
 
     /**
      * Default Constructor
@@ -28,9 +34,10 @@ public class FileReader {
     public FileReader(String studentData, String songList) throws IOException
     {
         this.songCollection = new SongCollection();
-        readInStudentData(studentData);
+        this.studentCollection = new StudentCollection();
         readInSongList(songList);
-        //new FrontEnd instance with songCollection parameter
+        readInStudentData(studentData);
+        new GUIWindow(this.songCollection, this.studentCollection);
     }
 
     /**
@@ -40,7 +47,8 @@ public class FileReader {
      */
     public static void main(String[] args) throws IOException
     {
-        if (args.length == 2){
+        if (args.length == 2)
+        {
             new FileReader(args[0], args[1]);
         }
         else
@@ -55,8 +63,8 @@ public class FileReader {
         String[] dataArray;
         Song song;
         String major;
-        String hobby;
         String region;
+        String hobby;
 
         scanner.nextLine();
 
@@ -64,7 +72,7 @@ public class FileReader {
         {
             //String of entire line before being split up into specific info
             String[] entireLine = scanner.nextLine().trim().split(",");
-            if (entireLine.length == (songCollection. * 2 + 4)) 
+            if (entireLine.length == (songCollection.getLength() * 2 + 4)) 
             {
                 dataArray = new String[entireLine.length + 1];
                 for (int i = 0; i < entireLine.length; i++) 
@@ -85,17 +93,59 @@ public class FileReader {
             major = dataArray[2];
             region = dataArray[3];
             hobby = dataArray[4];
-            
-            for (int i = 5; (i + 1) < dataArray.length; i += 2) {
-                song = songCollection.getAt((i - 5) / 2);
-                song.getMajorCount().increment(major, dataArray[i], dataArray[i + 1]);
-                song.getRegionCount().increment(region, dataArray[i], dataArray[i + 1]);
-                song.getHobbyCount().increment(hobby, dataArray[i], dataArray[i + 1]);
+            if (!major.equals("") && !region.equals("") 
+                    && !hobby.equals(""))
+            {
+                Student student = new Student(major, region, hobby);
+                studentCollection.add(student);
+                for (int i = 5; (i + 1) < dataArray.length; i += 2) 
+                {
+                    Iterator<Song> iter = songCollection.iterator();
+                    song = iter.next();
+                    if (dataArray[i].toString().equals("Yes"))
+                    {
+                        if (dataArray[i + 1].toString().equals("Yes"))
+                        {
+                            student.addSongHeard(song.getTitle(), true); 
+                        }
+                        else
+                        {
+                            student.addSongHeard(song.getTitle(), false);
+                        }
+                    }
+                }
             }
         }
-
         scanner.close();
     }
 
-
+    /**
+     * Read in songs from input file
+     * and add to SongCollection
+     * 
+     * @param songList Input file
+     * @throws IOException
+     */
+    public void readInSongList(String songList) throws IOException
+    {
+        Scanner scanner = new Scanner(new File(songList));
+        String[] songArray;
+        scanner.nextLine();
+        while (scanner.hasNextLine()) 
+        {
+            songArray = scanner.nextLine().trim().split(",");
+            this.songCollection.add(new Song(songArray[0], songArray[1], songArray[2], songArray[3],
+                    this.studentCollection));
+        }
+        scanner.close();
+    }
+    
+    /**
+     * Getter method for songCollection param
+     * @return songCollection param
+     */
+    public SongCollection getSongCollection()
+    {
+        return this.songCollection;
+    }
 }

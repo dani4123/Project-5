@@ -11,7 +11,8 @@ import java.util.Iterator;
  * @version (2016.11.13)
  *
  */
-public class StudentCollection extends LinkedList<Student>{
+public class StudentCollection extends LinkedList<Student>
+{
 	
 	/**
 	 * iterates through the
@@ -32,8 +33,8 @@ public class StudentCollection extends LinkedList<Student>{
 	 * 6 - 4th category heard
 	 * 7 - 5th category liked
 	 * 
-	 * @param title    song's title
-	 * @param rep  representation type
+	 * @param title song's title
+	 * @param rep representation type
 	 * @return array with poll information
 	 */
 	public int[] heardAndLikedAccordingTo(String title, RepresentationEnum rep)

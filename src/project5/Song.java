@@ -29,14 +29,15 @@ public class Song {
      * @param year Song year
      * @param studentCollection Every student with feedback on Song 
      */
-    public Song(String title, String genre, String artist, int year,
+    public Song(String title, String artist, String year, String genre,
             StudentCollection studentCollection)
     {
         this.title = title;
         this.genre = genre;
         this.artist = artist;
-        this.year = year;
+        this.year = Integer.valueOf(year);
         this.studentCollection = studentCollection;
+        this.statArray = new int[statArraySize];
     }
     
     /**
@@ -75,13 +76,21 @@ public class Song {
         return year;
     }
     
-    public void updateBy(RepresentationEnum rEnum)
+    /**
+     * Getter method for statArray field
+     * @return statArray
+     */
+    public int[] getStatArray()
     {
-        
+        return statArray;
     }
     
-    public int reportStats()
+    /**
+     * Writes to statArray
+     * @param rEnum Which category to write for
+     */
+    public void setStatArray(RepresentationEnum rEnum)
     {
-        
+        statArray = studentCollection.heardAndLikedAccordingTo(this.title, rEnum);
     }
 }

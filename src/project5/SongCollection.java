@@ -84,7 +84,7 @@ public class SongCollection extends LinkedList<Song>{
 		while (iter.hasNext())
 		{
 			Song currentSong = iter.next();
-			currentSong.updateBy(rep);
+			currentSong.setStatArray(rep);
 		}
 	}
 	
@@ -98,7 +98,7 @@ public class SongCollection extends LinkedList<Song>{
 	 */
 	public void sort(SongPropertyEnum prop)
 	{
-		Comparator comparator;
+		Comparator<Object> comparator;
 		switch (prop)
 		{
 		case ARTIST:

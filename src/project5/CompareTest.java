@@ -18,9 +18,8 @@ public class CompareTest extends TestCase {
      * Called upon before each test method is called.
      */
     public void setUp() {
-        song1 = new Song("Time", "Rock", "Pink Floyd", 1974, null);
-        song2 = new Song("Floats my Boat", "Rap", "Aer", 2009, null);
-        
+        song1 = new Song("Time", "Pink Floyd", "1974", "Rock", null);
+        song2 = new Song("Floats my Boat", "Aer", "2009", "Rap", null);
     }
     
     /**
