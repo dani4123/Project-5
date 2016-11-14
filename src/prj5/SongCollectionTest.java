@@ -141,6 +141,6 @@ public class SongCollectionTest extends TestCase {
     }
     
     public void testGetNineSongsToShow() {
-        
+        Song[] songs = collection.getNineSongsToShow();
     }
 }
