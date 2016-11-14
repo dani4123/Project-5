@@ -280,39 +280,23 @@ public class LinkedList<E> implements ListInterface<E> {
      * insertion sort according to
      * the specified comparator
      * 
-     * @param first    first index
-     * @param last     last index
      * @param comp     the comparator used
      */
-    public void sort(int first, int last, Comparator<Object> comp)
+    public void sort(Comparator<Object> comp)
     {
-        if (first < last)
+        Node<E> currentNode = this.head.next();
+        while (currentNode.next() != null)
         {
-            sort(first, last - 1, comp);
-            
-            insertInOrder(last, first, last - 1, comp);
-        }
-    }
-    
-    /**
-     * inserts an element to a specific position
-     * if it is strictly smaller than the
-     * original element at the position according
-     * to the comparator
-     * 
-     * @param entryIndex   the entry's current index
-     * @param begin    start of list
-     * @param end      right before entry's current index
-     * @param comp     comparator used to compare elements
-     */
-    public void insertInOrder(int entryIndex, int begin, int end, Comparator<Object> comp)
-    {
-        if (comp.compare(getEntry(entryIndex), getEntry(end)) < 0)
-        {
-            E currentEntry = getEntry(entryIndex);
-            replace(end + 1, getEntry(end));
-            replace(end, currentEntry);
-            insertInOrder(end, begin, end - 1, comp);
+            E data = currentNode.getData();
+            Node<E> tempNode = currentNode;
+            while (tempNode.previous().getData() != null 
+                    && comp.compare(data, tempNode.previous().getData()) < 0)
+            {
+                tempNode.data = tempNode.previous().getData();
+                tempNode = tempNode.previous();
+            }
+            tempNode.data = data;
+            currentNode = currentNode.next();
         }
     }
 }
