@@ -7,6 +7,10 @@ import student.TestCase;
  * class to ensure that they operate correctly. 
  * @author Phillip Hrinko
  * @version 2016.11.13
+ * 
+ * fixed some errors
+ * @author Jooyoung Whang (joo918)
+ * @version 2016.11.14
  */
 public class SongCollectionTest extends TestCase {
 
@@ -52,7 +56,13 @@ public class SongCollectionTest extends TestCase {
         assertTrue(collection.prevNineSongs());
         assertFalse(collection.prevNineSongs());
     }
-  
+    
+    /**
+     * tests changeRepresentationEnum()
+     * checks to see if a song's internal statArray has been
+     * updated successfully according to the RepresentationEnum
+     * after calling the method
+     */
     public void testChangeRepresentationEnum() {
         StudentCollection sCollection = new StudentCollection();
         Student student1 = new Student("Computer Science", "Northeast", "reading");
@@ -73,7 +83,10 @@ public class SongCollectionTest extends TestCase {
         assertEquals(0, song1.getStatArray()[1]);
         assertEquals(1, song1.getStatArray()[2]);
         assertEquals(1, song1.getStatArray()[3]);
-        
+        assertEquals(0, song2.getStatArray()[8]);
+        assertEquals(0, song2.getStatArray()[9]);
+        assertEquals(0, song2.getStatArray()[10]);
+        assertEquals(0, song2.getStatArray()[11]);
     }
     
     /**
