@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author JulianNguyen
  * @version 11/13/16
  */
-public class FileReader {
+public class Input {
 
     /**
      * Collection of Songs
@@ -31,7 +31,7 @@ public class FileReader {
      * @param songList CSV with song information
      * @throws IOException 
      */
-    public FileReader(String studentData, String songList) throws IOException
+    public Input(String studentData, String songList) throws IOException
     {
         this.songCollection = new SongCollection();
         this.studentCollection = new StudentCollection();
@@ -48,11 +48,11 @@ public class FileReader {
     {
         if (args.length == 2)
         {
-            new FileReader(args[0], args[1]);
+            new Input(args[0], args[1]);
         }
         else
         {
-            new FileReader("MusicSurveyData.csv", "SongList.csv");
+            new Input("MusicSurveyData.csv", "SongList.csv");
         }
     }
 
