@@ -13,7 +13,7 @@ public class Student {
     private String major;
     private String hobby;
     private String region;
-    private HashMap<String, Boolean[]> songInfo;
+    private HashMap<String, Integer[]> songInfo;
     
     /**
      * The constructor for this class that takes the parameters 
@@ -26,7 +26,7 @@ public class Student {
         this.major = major;
         this.region = region;
         this.hobby = hobby;
-        songInfo = new HashMap<String, Boolean[]>();
+        songInfo = new HashMap<String, Integer[]>();
     }
     
     /**
@@ -55,34 +55,30 @@ public class Student {
     
     /**
      * Adds the song to the map of songs the student has information on
-     * @param heard True if the student heard the song.
-     * @param liked True if the student liked the song.
+     * @param heard 0 if heard, 1 if not, 2 if no response
+     * @param liked 0 if liked, 1 if not, 2 is no response
      */
-    public void addSong(String song, boolean heard, boolean liked) {
-        songInfo.put(song, new Boolean[] {heard, liked});
+    public void addSong(String song, int heard, int liked) {
+        songInfo.put(song, new Integer[] {heard, liked});
     }
     
     /**
      * Checks to see if a song has been heard by this Student.
      * @param song The song to be checked if the student has heard. 
-     * @return True if the song was heard by the Student
+     * @return 0 if the student heard it, 1 if the student did not hear it
+     *          2, if there was no response
      */
-    public boolean hasHeard(String song) {
-        if (!songInfo.containsKey(song)) {
-            throw new IllegalArgumentException();
-        }
+    public int getHeardResponse(String song) {
         return songInfo.get(song)[0];
     }
     
     /**
      * Checks to see if a song was liked by the Student
      * @param song The song to be checked if the student likes.
-     * @return True if the Student likes the song
+     * @return 0 if the student liked it, 1 if the student did not like it
+     *          2, if there was no response
      */
-    public boolean doesLike(String song) {
-        if (!songInfo.containsKey(song)) {
-            throw new IllegalArgumentException();
-        }
+    public int getLikedResponse(String song) {
         return songInfo.get(song)[1];
     }
 }
