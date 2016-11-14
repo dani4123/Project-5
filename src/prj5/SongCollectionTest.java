@@ -27,7 +27,7 @@ public class SongCollectionTest extends TestCase {
         collection = new SongCollection();
         startSong = new Song("Famous", "Kanye", "2016", "Rap", null);
         collection.add(startSong);
-        for (int i = 1; i < 4; i++) {
+        for (int i = 1; i < 26; i++) {
             song = new Song("Song" + i, "Various", Integer.toString(i) , "Random", null);
             collection.add(song);
         }
