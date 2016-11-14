@@ -4,18 +4,29 @@ import java.util.Comparator;
 import java.util.Iterator;
 
 /**
+ * stores all the songs and their information.
+ * the data is sorted in a certain way
+ * (ARTIST, TITLE, YEAR, GENRE)
+ * It provides methods to get the necessary information
+ * needed when displaying on the GUIWindow
  * 
  * @author Jooyoung Whang (joo918)
+ * @version (2016.11.13)
  *
  */
-public class SongCollection {
+public class SongCollection extends LinkedList<Song>{
 
-	private LinkedList<Song> songList;
+    /**
+     * position used to find from where to show nine song data
+     */
 	private int position;
 	
+	/**
+	 * constructor.
+	 * initialize position to 0
+	 */
 	public SongCollection()
 	{
-		songList = new LinkedList<Song>();
 		position = 0;
 	}
 	
@@ -24,11 +35,11 @@ public class SongCollection {
 	 * reference when showing the next
 	 * set of songs in the graphics window
 	 * 
-	 * @return
+	 * @return whether position was moved or not
 	 */
 	public boolean nextNineSongs()
 	{
-		if (position + 9 < songList.getLength())
+		if (position + 9 < getLength())
 		{
 			position += 9;
 			return true;
@@ -44,7 +55,7 @@ public class SongCollection {
 	 * reference when showing the previous
 	 * set of songs in the graphics window
 	 * 
-	 * @return
+	 * @return whether position was moved or not
 	 */
 	public boolean prevNineSongs()
 	{
@@ -59,9 +70,17 @@ public class SongCollection {
 		}
 	}
 	
+	/**
+	 * calls updateBy on all songs
+	 * so that each songs change their
+	 * statistics(poll) data from the
+	 * studentCollection in a certain representation method
+	 * 
+	 * @param rep  the representation method
+	 */
 	public void changeRepresentationEnum(RepresentationEnum rep)
 	{
-		Iterator<Song> iter = songList.iterator();
+		Iterator<Song> iter = iterator();
 		while (iter.hasNext())
 		{
 			Song currentSong = iter.next();
@@ -69,6 +88,14 @@ public class SongCollection {
 		}
 	}
 	
+	/**
+	 * calls the super's sort so it uses
+	 * the correct comparator of the 
+	 * certain song property the list
+	 * needs to be sorted by.
+	 * 
+	 * @param prop the song property
+	 */
 	public void sort(SongPropertyEnum prop)
 	{
 		Comparator<Object> comparator;
@@ -91,60 +118,28 @@ public class SongCollection {
 			break;
 		}
 		
-		sort(0, songList.getLength() - 1, comparator);
+		super.sort(0, getLength() - 1, comparator);
 	}
 	
 	/**
-	 * insertion sort according to
-	 * the specified comparator
+	 * returns an array of at maximum nine songs
+	 * according to the position field.
+	 * (Used to display on GUIWindow)
 	 * 
-	 * @param first
-	 * @param last
-	 * @param comp
+	 * @return song array
 	 */
-	public void sort(int first, int last, Comparator<Object> comp)
-	{
-		if (first < last)
-		{
-			sort(first, last - 1, comp);
-			
-			insertInOrder(last, first, last - 1, comp);
-		}
-	}
-	
-	public void insertInOrder(int entryIndex, int begin, int end, Comparator<Object> comp)
-	{
-		if (comp.compare(songList.getEntry(entryIndex), songList.getEntry(end)) < 0)
-		{
-			Song currentSong = songList.getEntry(entryIndex);
-			songList.replace(end + 1, songList.getEntry(end));
-			songList.replace(end, currentSong);
-			insertInOrder(end, begin, end - 1, comp);
-		}
-	}
-	
 	public Song[] getNineSongsToShow()
 	{
 		int end = position + 9;
-		if (end > songList.getLength())
+		if (end > getLength())
 		{
-			end = songList.getLength();
+			end = getLength();
 		}
 		Song[] returnList = new Song[end - position];
-		for (int i = position ; i < songList.getLength() ; i++)
+		for (int i = position ; i < getLength() ; i++)
 		{
-			returnList[i] = songList.getEntry(i);
+			returnList[i] = getEntry(i);
 		}
 		return returnList;
-	}
-	
-	public int getSize()
-	{
-	    return songList.getLength();
-	}
-	
-	public Song getSong(int index)
-	{
-	    return songList.getEntry(index);
 	}
 }

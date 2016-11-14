@@ -125,4 +125,13 @@ public class FileReader {
         }
         scanner.close();
     }
+    
+    /**
+     * Getter method for songCollection param
+     * @return songCollection param
+     */
+    public SongCollection getSongCollection()
+    {
+        return this.songCollection;
+    }
 }

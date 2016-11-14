@@ -11,38 +11,12 @@ import java.util.Iterator;
  * @version (2016.11.13)
  *
  */
-public class StudentCollection {
-
-    /**
-     * linked list of students' polling
-     * information inside
-     */
-	private LinkedList<Student> studentList;
-	
-	/**
-	 * constructor
-	 * initializes studentList
-	 * (initially empty)
-	 */
-	public StudentCollection()
-	{
-		studentList = new LinkedList<Student>();
-	}
-	
-	/**
-	 * used by the FileReader
-	 * when initializing studentList;
-	 * 
-	 * @param student  student to add
-	 */
-	public void addStudent(Student student)
-	{
-		studentList.add(student);
-	}
+public class StudentCollection extends LinkedList<Student>
+{
 	
 	/**
 	 * iterates through the
-	 * studentList in order to
+	 * studentCollection in order to
 	 * gather poll information
 	 * according to the
 	 * song title and
@@ -65,7 +39,7 @@ public class StudentCollection {
 	 */
 	public int[] heardAndLikedAccordingTo(String title, RepresentationEnum rep)
 	{
-		Iterator<Student> iter = studentList.iterator();
+		Iterator<Student> iter = iterator();
 		int[] returnArray = new int[8];
 		
 		switch (rep)
@@ -80,19 +54,19 @@ public class StudentCollection {
 					int position = 0;
 					switch (current.getHobby())
 					{
-					case "first":
+					case "reading":
 						returnArray[0]++;
 						position = 1;
 						break;
-					case "second":
+					case "art":
 						returnArray[2]++;
 						position = 3;
 						break;
-					case "third":
+					case "sports":
 						returnArray[4]++;
 						position = 5;
 						break;
-					case "fourth":
+					case "music":
 						returnArray[6]++;
 						position = 7;
 						break;
@@ -115,19 +89,19 @@ public class StudentCollection {
 					int position = 0;
 					switch (current.getHobby())
 					{
-					case "first":
+					case "Computer Science":
 						returnArray[0]++;
 						position = 1;
 						break;
-					case "second":
+					case "Other Engineering":
 						returnArray[2]++;
 						position = 3;
 						break;
-					case "third":
+					case "Math or CMDA":
 						returnArray[4]++;
 						position = 5;
 						break;
-					case "fourth":
+					case "Other":
 						returnArray[6]++;
 						position = 7;
 						break;
@@ -150,19 +124,19 @@ public class StudentCollection {
 					int position = 0;
 					switch (current.getHobby())
 					{
-					case "first":
+					case "Northeast":
 						returnArray[0]++;
 						position = 1;
 						break;
-					case "second":
+					case "Southeast":
 						returnArray[2]++;
 						position = 3;
 						break;
-					case "third":
+					case "United States (other than Southeast or Northwest)":
 						returnArray[4]++;
 						position = 5;
 						break;
-					case "fourth":
+					case "Outside of United States":
 						returnArray[6]++;
 						position = 7;
 						break;
@@ -178,16 +152,5 @@ public class StudentCollection {
 		}
 		
 		return returnArray;
-	}
-	
-	/**
-	 * gets the current studentCollection's
-	 * size
-	 * 
-	 * @return size of studentCollection
-	 */
-	public int getSize()
-	{
-	    return studentList.getLength();
 	}
 }

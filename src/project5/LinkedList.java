@@ -1,4 +1,5 @@
 package project5;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import list.ListInterface;
@@ -269,6 +270,46 @@ public class LinkedList<E> implements ListInterface<E> {
             else {
                 throw new NoSuchElementException("if there are " + "no nodes left in the list");
             }
+        }
+    }
+    
+    /**
+     * insertion sort according to
+     * the specified comparator
+     * 
+     * @param first    first index
+     * @param last     last index
+     * @param comp     the comparator used
+     */
+    public void sort(int first, int last, Comparator comp)
+    {
+        if (first < last)
+        {
+            sort(first, last - 1, comp);
+            
+            insertInOrder(last, first, last - 1, comp);
+        }
+    }
+    
+    /**
+     * inserts an element to the specific position,
+     * but only if it is strictly smaller than the
+     * original element at the position according
+     * to the comparator
+     * 
+     * @param entryIndex   the entry's current index
+     * @param begin    start of list
+     * @param end      right before entry's current index
+     * @param comp     comparator used to compare elements
+     */
+    public void insertInOrder(int entryIndex, int begin, int end, Comparator comp)
+    {
+        if (comp.compare(getEntry(entryIndex), getEntry(end)) < 0)
+        {
+            E currentEntry = getEntry(entryIndex);
+            replace(end + 1, getEntry(end));
+            replace(end, currentEntry);
+            insertInOrder(end, begin, end - 1, comp);
         }
     }
 }
