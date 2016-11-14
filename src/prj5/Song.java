@@ -17,7 +17,7 @@ public class Song {
     /**
      * Set capacity of statArray. 
      */
-    public static final int statArraySize = 16;
+    public static final int STAT_ARRAY_SIZE = 16;
     private StudentCollection studentCollection;
 
     /**
@@ -37,7 +37,7 @@ public class Song {
         this.artist = artist;
         this.year = Integer.valueOf(year);
         this.studentCollection = studentCollection;
-        this.statArray = new int[statArraySize];
+        this.statArray = new int[STAT_ARRAY_SIZE];
     }
 
     /**
@@ -91,6 +91,7 @@ public class Song {
      */
     public void setStatArray(RepresentationEnum rEnum)
     {
-        statArray = studentCollection.heardAndLikedAccordingTo(this.title, rEnum);
+        statArray = studentCollection.heardAndLikedAccordingTo
+            (this.title, rEnum);
     }
 }

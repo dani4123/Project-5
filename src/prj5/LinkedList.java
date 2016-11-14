@@ -15,31 +15,62 @@ import list.ListInterface;
  */
 public class LinkedList<E> implements ListInterface<E> {
 
+    /**
+     * Inner Node Class
+     * @author JulianNguyen
+     * @version 11.14.16
+     *
+     * @param <E>
+     */
     private static class Node<E> {
         private Node<E> next;
         private Node<E> previous;
         private E data;
 
+        /**
+         * Default Constructor
+         * @param data Genereric type object contained in node
+         */
         public Node(E data) {
             this.data = data;
         }
 
+        /**
+         * Set this node's next node
+         * @param nextNode
+         */
         public void setNext(Node<E> nextNode) {
             next = nextNode;
         }
 
+        /**
+         * Set this node's previous node
+         * @param lastNode
+         */
         public void setPrevious(Node<E> lastNode) {
             previous = lastNode;
         }
 
+        /**
+         * Get this node's next node
+         * @return this.next
+         */
         public Node<E> next() {
             return next;
         }
 
+        /**
+         * Get this node's previous node
+         * @return this.previous
+         */
         public Node<E> previous() {
             return previous;
         }
 
+        /**
+         * Return the data/object at a node
+         * @return this.data
+         */
         public E getData() {
             return data;
         }
@@ -62,7 +93,6 @@ public class LinkedList<E> implements ListInterface<E> {
 
     /** Adds the element at the end of the linked list.
      * @param anEntry the element to be added to the list
-     * @return True if it was added.
      * @throws IllegalArgumentException if anEntry is null.
      */
     public void add(E anEntry) {
@@ -77,17 +107,24 @@ public class LinkedList<E> implements ListInterface<E> {
      *          or the index if negative
      * @throws IllegalArgumentException if anEntry is null.
      */
-    public void add(int index, E anEntry) {
-        if (index < 0 || size < index) {
+    public void add(int index, E anEntry) 
+    {
+        if (index < 0 || size < index) 
+        {
             throw new IndexOutOfBoundsException();
         }
-        if (anEntry == null) {
-            throw new IllegalArgumentException("Cannot add null " + "objects to a list");
+        if (anEntry == null) 
+        {
+            throw new IllegalArgumentException("Cannot add null " +
+                "objects to a list");
         }
         Node<E> nodeAfter;
-        if (index == size) {
+        if (index == size) 
+        {
             nodeAfter = tail;
-        } else {
+        } 
+        else 
+        {
             nodeAfter = getNodeAtIndex(index);
         }
         Node<E> newNode = new Node<E>(anEntry);
@@ -104,12 +141,16 @@ public class LinkedList<E> implements ListInterface<E> {
      * @param index the index in the list
      * @return node at that index
      */
-    private Node<E> getNodeAtIndex(int index) {
-        if (index < 0 || size <= index) {
-            throw new IndexOutOfBoundsException("No element exists at " + index);
+    private Node<E> getNodeAtIndex(int index) 
+    {
+        if (index < 0 || size <= index) 
+        {
+            throw new IndexOutOfBoundsException("No element exists at " 
+                + index);
         }
         Node<E> current = head.next(); // as we have a sentinel node
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < index; i++) 
+        {
             current = current.next();
         }
         return current;
@@ -193,7 +234,6 @@ public class LinkedList<E> implements ListInterface<E> {
     /**
      * Sees whether this list is empty
      * @return True if the size of the list is zero, false if not
-     * @return True if the size of the list is zero.
      */
     @Override
     public boolean isEmpty() {
@@ -202,7 +242,6 @@ public class LinkedList<E> implements ListInterface<E> {
     /**
      * Gets the length of this list.
      * @return the integer number of entries currently in the list
-     * @return the length of the list.
      */
     @Override
     public int getLength() {
@@ -262,7 +301,8 @@ public class LinkedList<E> implements ListInterface<E> {
         /**
          * Gets the next value in the list
          * @return the next value
-         * @throws NoSuchElementException if there are no nodes left in the list.
+         * @throws NoSuchElementException if there are no nodes 
+         * left in the list.
          */
         @Override
         public E next() {
@@ -271,7 +311,8 @@ public class LinkedList<E> implements ListInterface<E> {
                 return currentNode.getData();
             } 
             else {
-                throw new NoSuchElementException("if there are " + "no nodes left in the list");
+                throw new NoSuchElementException("if there are " 
+                    + "no nodes left in the list");
             }
         }
     }

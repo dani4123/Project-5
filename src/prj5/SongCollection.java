@@ -14,7 +14,8 @@ import java.util.Iterator;
  * @version (2016.11.13)
  *
  */
-public class SongCollection extends LinkedList<Song>{
+public class SongCollection extends LinkedList<Song>
+{
 
     /**
      * position used to find from where to show nine song data
@@ -101,21 +102,21 @@ public class SongCollection extends LinkedList<Song>{
         Comparator<Object> comparator;
         switch (prop)
         {
-        case ARTIST:
-            comparator = new CompareByArtist();
-            break;
-        case TITLE:
-            comparator = new CompareByTitle();
-            break;
-        case YEAR:
-            comparator = new CompareByYear();
-            break;
-        case GENRE:
-            comparator = new CompareByGenre();
-            break;
-        default:
-            comparator = new CompareByTitle();
-            break;
+            case ARTIST:
+                comparator = new CompareByArtist();
+                break;
+            case TITLE:
+                comparator = new CompareByTitle();
+                break;
+            case YEAR:
+                comparator = new CompareByYear();
+                break;
+            case GENRE:
+                comparator = new CompareByGenre();
+                break;
+            default:
+                comparator = new CompareByTitle();
+                break;
         }
 
         super.sort(comparator);
