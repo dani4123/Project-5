@@ -22,18 +22,22 @@ public class StudentCollection extends LinkedList<Student>
      * returns an integer array
      * with each index containing:
      * 
-     * 0 - 1st category student total
-     * 1 - 1st category heard
-     * 2 - 1st category liked
-     * 3 - 2nd category student total
-     * 4 - 2nd category heard
-     * 5 - 2nd category liked
-     * 6 - 3rd category student total
-     * 7 - 3rd category heard
-     * 8 - 3rd category liked
-     * 9 - 4th category student total 
-     * 10 - 4th category heard
-     * 11 - 4th category liked
+     * 0 - 1st category heard responded
+     * 1 - 1st category heard total
+     * 2 - 1st category liked responded
+     * 3 - 1st category liked total 
+     * 4 - 2nd category heard responded
+     * 5 - 2nd category heard total
+     * 6 - 2nd category liked responded
+     * 7 - 2nd category liked total
+     * 8 - 3rd category heard responded
+     * 9 - 3rd category heard total
+     * 10 - 3rd category liked responded
+     * 11 - 3rd category liked total
+     * 12 - 4th category heard responded
+     * 13 - 4th category heard total
+     * 14 - 4th category liked responded
+     * 15 - 4th category liked total
      * 
      * @param title song's title
      * @param rep representation type
