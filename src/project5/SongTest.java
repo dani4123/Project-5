@@ -14,6 +14,11 @@ public class SongTest extends TestCase {
 
     private Song song1;
     private StudentCollection collection;
+    private Student student1;
+    private Student student2;
+    private Student student3;
+    private Student student4;
+    private Student student5;
 
     /**
      * Called upon before every test method is called.
@@ -21,8 +26,25 @@ public class SongTest extends TestCase {
     public void setUp()
     {
         collection = new StudentCollection();
-        song1 = new Song("All These Things I've Done", "The Killers", 
+        
+        student1 = new Student("Computer Science", "reading", "Northeast");
+        student1.addSongHeard("Work", true);
+        student2 = new Student("Other Engineering", "art", "Southeast");
+        student2.addSongHeard("Work", false);
+        student3 = new Student("Math or CMDA", "sports", "United States (other than Southeast or Northwest)");
+        student3.addSongHeard("Work", true);
+        student4 = new Student("Other", "music", "Outside of United States");
+        student4.addSongHeard("Work", false);
+        student5 = new Student("Other", "music", "Northeast");
+        student5.addSongHeard("Views", true);
+        collection.add(student1);
+        collection.add(student2);
+        collection.add(student3);
+        collection.add(student4);
+        collection.add(student5);
+        song1 = new Song("Work", "The Killers", 
                 "2005", "alternative", collection);
+        
     }
 
     /**
@@ -30,7 +52,7 @@ public class SongTest extends TestCase {
      */
     public void testGetTitle()
     {
-        assertTrue("All These Things I've Done".equals(song1.getTitle()));
+        assertTrue("Work".equals(song1.getTitle()));
     }
     
     /**
@@ -63,5 +85,17 @@ public class SongTest extends TestCase {
     public void testGetStatArray()
     {
         assertEquals(8, song1.getStatArray().length);
+    }
+    
+    /**
+     * Tests setStatArray method
+     */
+    public void testSetStatArray()
+    {
+        int[] expectedHobby = {1, 1, 1, 0, 1, 1, 1, 0};
+        song1.setStatArray(RepresentationEnum.HOBBY);
+        for (int i = 0; i < 8; i++) {
+            assertEquals(expectedHobby[i], song1.getStatArray()[i]);
+        }
     }
 }

@@ -57,8 +57,10 @@ public class StudentCollection extends LinkedList<Student>
 					case "reading":
 						returnArray[0]++;
 						position = 1;
+						System.out.println("I'm here");
 						break;
 					case "art":
+					    System.out.println("I didn't get out");
 						returnArray[2]++;
 						position = 3;
 						break;
@@ -71,8 +73,10 @@ public class StudentCollection extends LinkedList<Student>
 						position = 7;
 						break;
 					}
+					System.out.println(" before here");
 					if (current.doesLike(title))
 					{
+					    System.out.println("here");
 						returnArray[position]++;
 					}
 				}
