@@ -84,20 +84,20 @@ public class SongCollectionTest extends TestCase {
     
     public void testSortYear() {
         collection.sort(SongPropertyEnum.YEAR);
-        //assertEquals(collection.getEntry(25), startSong);
-        //assertEquals(collection.getEntry(26), endSong);
-        //assertEquals(collection.getEntry(0).getTitle(), "Song1");
-        //assertEquals(collection.getEntry(1).getTitle(), "Song2");
-        //assertEquals(collection.getEntry(24).getTitle(), "Song25");
+        assertEquals(collection.getEntry(25), startSong);
+        assertEquals(collection.getEntry(26), endSong);
+        assertEquals(collection.getEntry(0).getTitle(), "Song1");
+        assertEquals(collection.getEntry(1).getTitle(), "Song2");
+        assertEquals(collection.getEntry(24).getTitle(), "Song25");
     }
     
     public void testSortGenre() {
         collection.sort(SongPropertyEnum.GENRE);
-        //assertEquals(collection.getEntry(25), startSong);
-        //assertEquals(collection.getEntry(26), endSong);
-        //assertEquals(collection.getEntry(0).getTitle(), "Song1");
-        //assertEquals(collection.getEntry(1).getTitle(), "Song2");
-        //assertEquals(collection.getEntry(24).getTitle(), "Song25");
+        assertEquals(collection.getEntry(25), startSong);
+        assertEquals(collection.getEntry(26), endSong);
+        assertEquals(collection.getEntry(0).getTitle(), "Song1");
+        assertEquals(collection.getEntry(1).getTitle(), "Song2");
+        assertEquals(collection.getEntry(24).getTitle(), "Song25");
     }
     
     public void testGetNineSongsToShow() {
