@@ -1,5 +1,5 @@
 *******
-Music Preference Visualization (MPV)
+Music Preference Visualization (MPV) - Group 68
 *******
 
 .. contents::
