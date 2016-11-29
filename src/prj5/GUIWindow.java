@@ -289,8 +289,8 @@ public class GUIWindow {
         currentShown = new SongGraphic[songs.length];
         for (int i = 0 ; i < songs.length ; i++)
         {
-            SongGraphic songgraphic = new SongGraphic(songs[i], currentProperty, 400 * (i % 3) + 200,
-                                                        300 * (i/3) + 100);
+            SongGraphic songgraphic = new SongGraphic(songs[i], currentProperty, 300 * (i % 3) + 200,
+                                                        180 * (i/3) + 50);
             currentShown[i] = songgraphic;
             songgraphic.addToWindow(window);
         }
@@ -325,31 +325,51 @@ public class GUIWindow {
         {
             song = theSong;
             songInfo = sortedBy;
-            int[] info = song.getStatArray();
+            int[] stats = song.getStatArray();
+            int[] outputPerc = new int[8];
+            for (int i = 0 ; i < 4 ; i++)
+            {
+                if (stats[i * 4 + 1] == 0)
+                {
+                    outputPerc[i * 2] = 0;
+                }
+                else
+                {
+                    outputPerc[i * 2] = (int) ((double) stats[i * 4 + 1] / stats[i * 4] * 100);
+                }
+                if (stats[i * 4 + 3] == 0)
+                {
+                    outputPerc[i * 2 + 1] = 0;
+                }
+                else
+                {
+                    outputPerc[i * 2 + 1] = (int) ((double) stats[i * 4 + 3] / stats[i * 4 + 2] * 100);
+                }
+            }
             divider = new Shape(x, y, graphThickness / 2, graphThickness * 4, Color.BLACK);
-            firstHeard = new Shape(x - info[0] * sizeMultiplier, y,
-                    info[0] * sizeMultiplier, graphThickness, Color.MAGENTA);
+            firstHeard = new Shape(x - outputPerc[0] * sizeMultiplier, y,
+                    outputPerc[0] * sizeMultiplier, graphThickness, Color.MAGENTA);
             firstLiked = new Shape(x + graphThickness / 2, y,
-                    info[1] * sizeMultiplier, graphThickness, Color.MAGENTA);
-            secondHeard = new Shape(x - info[2] * sizeMultiplier, y + graphThickness,
-                    info[2] * sizeMultiplier, graphThickness, Color.BLUE);
+                    outputPerc[1] * sizeMultiplier, graphThickness, Color.MAGENTA);
+            secondHeard = new Shape(x - outputPerc[2] * sizeMultiplier, y + graphThickness,
+                    outputPerc[2] * sizeMultiplier, graphThickness, Color.BLUE);
             secondLiked = new Shape(x + graphThickness / 2, y + graphThickness,
-                    info[3] * sizeMultiplier, graphThickness, Color.BLUE);
-            thirdHeard = new Shape(x - info[4] * sizeMultiplier, y + graphThickness * 2,
-                    info[4] * sizeMultiplier, graphThickness, Color.ORANGE);
+                    outputPerc[3] * sizeMultiplier, graphThickness, Color.BLUE);
+            thirdHeard = new Shape(x - outputPerc[4] * sizeMultiplier, y + graphThickness * 2,
+                    outputPerc[4] * sizeMultiplier, graphThickness, Color.ORANGE);
             thirdLiked = new Shape(x + graphThickness / 2, y + graphThickness * 2,
-                    info[5] * sizeMultiplier, graphThickness, Color.ORANGE);
-            fourthHeard = new Shape(x - info[6] * sizeMultiplier, y + graphThickness * 3,
-                    info[6] * sizeMultiplier, graphThickness, Color.GREEN);
+                    outputPerc[5] * sizeMultiplier, graphThickness, Color.ORANGE);
+            fourthHeard = new Shape(x - outputPerc[6] * sizeMultiplier, y + graphThickness * 3,
+                    outputPerc[6] * sizeMultiplier, graphThickness, Color.GREEN);
             fourthLiked = new Shape(x + graphThickness / 2, y + graphThickness * 3,
-                    info[7] * sizeMultiplier, graphThickness, Color.GREEN);
+                    outputPerc[7] * sizeMultiplier, graphThickness, Color.GREEN);
 
             title = new TextShape(x, y, song.getTitle());
             title.setBackgroundColor(null);
             switch (sortedBy)
             {
             case ARTIST:
-                representation = new TextShape(x, y, "by" + song.getArtist());
+                representation = new TextShape(x, y, "by " + song.getArtist());
                 break;
             case YEAR:
                 representation = new TextShape(x, y, String.valueOf(song.getYear()));
@@ -358,7 +378,7 @@ public class GUIWindow {
                 representation = new TextShape(x, y, "genre: " + song.getGenre());
                 break;
             default:
-                representation = new TextShape(x, y, "");
+                representation = new TextShape(x, y, "by " + song.getArtist());
                 break;
             }
             representation.setBackgroundColor(null);

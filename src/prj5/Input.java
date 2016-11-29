@@ -46,7 +46,7 @@ public class Input {
         readInStudentData(studentData);
         new GUIWindow(this);
     }
-
+    
     /**
      * Main method that initiates instance of program
      * @param args I/O Input with filename input
@@ -194,7 +194,7 @@ public class Input {
             System.out.println("song year " + currentOutput.getYear());
             System.out.println("heard");
             int[] stats = currentOutput.getStatArray();
-            int[] outputPerc = new int[12];
+            int[] outputPerc = new int[8];
             /*StringBuilder sb = new StringBuilder();
             for (int i = 0 ; i < 16 ; i++)
             {
