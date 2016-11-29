@@ -16,6 +16,7 @@ public class ProjectRunner {
      */
     public static void main(String[] args)
     {
-        new GUIWindow(null);
+        //Input instance = Input.main(args);
+        //new GUIWindow();
     }
 }

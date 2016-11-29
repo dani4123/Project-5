@@ -29,7 +29,8 @@ public class GUIWindow {
     private Button representHobby;
     private Button representMajor;
     private Button representRegion;
-    private SongPropertyEnum currentSongProperty;
+    
+    private SongPropertyEnum currentProperty;
     private RepresentationEnum currentRepresentation;
 
     private static final int WINDOW_WIDTH = 1280;
@@ -52,6 +53,7 @@ public class GUIWindow {
         {
             songcollection = null;
         }
+        //initialize window and buttons
         window = new Window("Music Preference Visualization");
         quitButton = new Button("Quit");
         nextButton = new Button("Next ->");
@@ -75,10 +77,12 @@ public class GUIWindow {
         window.addButton(representMajor, WindowSide.SOUTH);
         window.addButton(representRegion, WindowSide.SOUTH);
         window.addButton(quitButton, WindowSide.SOUTH);
-
-        currentSongProperty = SongPropertyEnum.TITLE;
+        
+        //initalize enums and currentShown array
+        currentProperty = SongPropertyEnum.ARTIST;
         currentRepresentation = RepresentationEnum.HOBBY;
-
+        
+        //create legend box
         Shape legendBox = new Shape(WINDOW_WIDTH - LEGEND_WIDTH,
                 WINDOW_HEIGHT - LEGEND_HEIGHT,
                 LEGEND_WIDTH, LEGEND_HEIGHT);
@@ -118,6 +122,7 @@ public class GUIWindow {
         window.moveToFront(heard);
         window.moveToFront(likes);
 
+        /*
         StudentCollection studentCol = new StudentCollection();
         Student dude1 = new Student("Computer Science", "Northeast", "reading");
         dude1.addSong("Default", 0, 0);
@@ -138,6 +143,20 @@ public class GUIWindow {
         testSong.setStatArray(RepresentationEnum.HOBBY);
         SongGraphic sg = new SongGraphic(testSong, SongPropertyEnum.ARTIST, 250, 100);
         sg.addToWindow(window);
+        */
+        
+        //add functionalities to buttons
+        
+        quitButton.onClick(this, "pressedQuit");
+        nextButton.onClick(this, "pressedNext");
+        previousButton.onClick(this, "pressedPrev");
+        sortByArtist.onClick(this, "pressedArtist");
+        sortByTitle.onClick(this, "pressedTitle");
+        sortByDate.onClick(this, "pressedDate");
+        sortByGenre.onClick(this, "pressedGenre");
+        representHobby.onClick(this, "pressedHobby");
+        representMajor.onClick(this, "pressedMajor");
+        representRegion.onClick(this, "pressedRegion");
     }
 
     public void setUpLegend(RepresentationEnum re)
@@ -177,7 +196,106 @@ public class GUIWindow {
             window.moveToFront(returnText[i]);
         }
     }
+    
+    public void pressedQuit(Button b)
+    {
+        System.exit(0);
+    }
+    
+    public void pressedNext(Button b)
+    {
+        if (songcollection.nextNineSongs())
+        {
+            updateGraphics(songcollection.getNineSongsToShow());
+            previousButton.enable();
+        }
+        else
+        {
+            b.disable();
+        }
+    }
+    
+    public void pressedPrev(Button b)
+    {
+        if (songcollection.prevNineSongs())
+        {
+            updateGraphics(songcollection.getNineSongsToShow());
+            nextButton.enable();
+        }
+        else
+        {
+            b.disable();
+        }
+    }
 
+    public void pressedArtist(Button b)
+    {
+        songcollection.sort(SongPropertyEnum.ARTIST);
+        currentProperty = SongPropertyEnum.ARTIST;
+        updateGraphics(songcollection.getNineSongsToShow());
+    }
+    
+    public void pressedTitle(Button b)
+    {
+        songcollection.sort(SongPropertyEnum.TITLE);
+        currentProperty = SongPropertyEnum.TITLE;
+        updateGraphics(songcollection.getNineSongsToShow());
+    }
+    
+    public void pressedDate(Button b)
+    {
+        songcollection.sort(SongPropertyEnum.YEAR);
+        currentProperty = SongPropertyEnum.YEAR;
+        updateGraphics(songcollection.getNineSongsToShow());
+    }
+    
+    public void pressedGenre(Button b)
+    {
+        songcollection.sort(SongPropertyEnum.GENRE);
+        currentProperty = SongPropertyEnum.GENRE;
+        updateGraphics(songcollection.getNineSongsToShow());
+    }
+    
+    public void pressedHobby(Button b)
+    {
+        songcollection.changeRepresentationEnum(RepresentationEnum.HOBBY);
+        currentRepresentation = RepresentationEnum.HOBBY;
+        updateGraphics(songcollection.getNineSongsToShow());
+    }
+    
+    public void pressedMajor(Button b)
+    {
+        songcollection.changeRepresentationEnum(RepresentationEnum.MAJOR);
+        currentRepresentation = RepresentationEnum.MAJOR;
+        updateGraphics(songcollection.getNineSongsToShow());
+    }
+    
+    public void pressedRegion(Button b)
+    {
+        songcollection.changeRepresentationEnum(RepresentationEnum.REGION);
+        currentRepresentation = RepresentationEnum.REGION;
+        updateGraphics(songcollection.getNineSongsToShow());
+    }
+    
+    public void updateGraphics(Song[] songs)
+    {
+        if (currentShown != null)
+        {
+            for (SongGraphic sg : currentShown)
+            {
+                sg.removeFromWindow(window);
+            }
+        }
+        currentShown = new SongGraphic[songs.length];
+        for (int i = 0 ; i < songs.length ; i++)
+        {
+            SongGraphic songgraphic = new SongGraphic(songs[i], currentProperty, 400 * (i % 3) + 200,
+                                                        300 * (i/3) + 100);
+            currentShown[i] = songgraphic;
+            songgraphic.addToWindow(window);
+        }
+    }
+    
     private class SongGraphic
     {
         private Song song;
