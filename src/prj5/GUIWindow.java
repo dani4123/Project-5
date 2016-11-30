@@ -30,6 +30,8 @@ public class GUIWindow {
     private Button representMajor;
     private Button representRegion;
     
+    private boolean legendShown;
+    
     private SongPropertyEnum currentProperty;
     private RepresentationEnum currentRepresentation;
 
@@ -87,7 +89,7 @@ public class GUIWindow {
         sortByGenre = new Button("Sort By Genre");
         representHobby = new Button("Represent Hobby");
         representMajor = new Button("Represent Major");
-        representRegion = new Button("RepresentRegion");
+        representRegion = new Button("Represent Region");
 
         window.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         window.addButton(previousButton, WindowSide.NORTH);
@@ -105,68 +107,8 @@ public class GUIWindow {
         currentProperty = SongPropertyEnum.ARTIST;
         currentRepresentation = RepresentationEnum.HOBBY;
         
-        //create legend box
-        Shape legendBox = new Shape(WINDOW_WIDTH - LEGEND_WIDTH,
-                WINDOW_HEIGHT - LEGEND_HEIGHT,
-                LEGEND_WIDTH, LEGEND_HEIGHT);
-        legendBox.setBackgroundColor(Color.WHITE);
-        legendBox.setForegroundColor(Color.BLACK);
-        window.addShape(legendBox);
-
-        setUpLegend(currentRepresentation);
-
-        TextShape songtitle = new TextShape(0, 0, "Song Title");
-        songtitle.setBackgroundColor(null);
-        songtitle.setX(WINDOW_WIDTH - LEGEND_WIDTH / 2 - songtitle.getWidth() / 2);
-        songtitle.setY(WINDOW_HEIGHT - LEGEND_HEIGHT + 6 * LEGEND_TEXT_GAP);
-        window.addShape(songtitle);
-        window.moveToFront(songtitle);
-
-        Shape seperator = new Shape(WINDOW_WIDTH - LEGEND_WIDTH / 2 -
-                LEGEND_TEXT_GAP / 2, 
-                WINDOW_HEIGHT - LEGEND_HEIGHT + 
-                7 * LEGEND_TEXT_GAP,
-                LEGEND_TEXT_GAP, LEGEND_HEIGHT / 4);
-        seperator.setBackgroundColor(Color.BLACK);
-        seperator.setForegroundColor(Color.BLACK);
-        window.addShape(seperator);
-        window.moveToFront(seperator);
-
-        TextShape heard = new TextShape(0, 0, "Heard");
-        TextShape likes = new TextShape(0, 0, "Likes");
-        heard.setBackgroundColor(null);
-        likes.setBackgroundColor(null);
-        heard.setX(seperator.getX() - heard.getWidth() - LEGEND_TEXT_GAP / 2);
-        heard.setY(seperator.getY() + seperator.getHeight() / 2 - heard.getHeight() / 2);
-        likes.setX(seperator.getX() + seperator.getWidth() + LEGEND_TEXT_GAP / 2);
-        likes.setY(seperator.getY() + seperator.getHeight() / 2 - likes.getHeight() / 2);
-        window.addShape(heard);
-        window.addShape(likes);
-        window.moveToFront(heard);
-        window.moveToFront(likes);
-
-        /*
-        StudentCollection studentCol = new StudentCollection();
-        Student dude1 = new Student("Computer Science", "Northeast", "reading");
-        dude1.addSong("Default", 0, 0);
-        Student dude2 = new Student("Computer Science", "Northeast", "art");
-        dude2.addSong("Default", 0, 0);
-        Student dude3 = new Student("Computer Science", "Northeast", "sports");
-        dude3.addSong("Default", 0, 0);
-        Student dude4 = new Student("Computer Science", "Northeast", "music");
-        dude4.addSong("Default", 0, 0);
-        for (int i = 0 ; i < 100 ; i++)
-        {
-            studentCol.add(dude1);
-            studentCol.add(dude2);
-            studentCol.add(dude3);
-            studentCol.add(dude4);
-        }
-        Song testSong = new Song("Default", "me", "0", "genre", studentCol);
-        testSong.setStatArray(RepresentationEnum.HOBBY);
-        SongGraphic sg = new SongGraphic(testSong, SongPropertyEnum.ARTIST, 250, 100);
-        sg.addToWindow(window);
-        */
+        //legend box should not be shown yet.
+        legendShown = false;
         
         //add functionalities to buttons
         
@@ -191,6 +133,47 @@ public class GUIWindow {
      */
     public void setUpLegend(RepresentationEnum re)
     {
+        if (!legendShown)
+        {
+          //create legend box
+            Shape legendBox = new Shape(WINDOW_WIDTH - LEGEND_WIDTH,
+                    WINDOW_HEIGHT - LEGEND_HEIGHT,
+                    LEGEND_WIDTH, LEGEND_HEIGHT);
+            legendBox.setBackgroundColor(Color.WHITE);
+            legendBox.setForegroundColor(Color.BLACK);
+            window.addShape(legendBox);
+
+
+            TextShape songtitle = new TextShape(0, 0, "Song Title");
+            songtitle.setBackgroundColor(null);
+            songtitle.setX(WINDOW_WIDTH - LEGEND_WIDTH / 2 - songtitle.getWidth() / 2);
+            songtitle.setY(WINDOW_HEIGHT - LEGEND_HEIGHT + 6 * LEGEND_TEXT_GAP);
+            window.addShape(songtitle);
+            window.moveToFront(songtitle);
+
+            Shape seperator = new Shape(WINDOW_WIDTH - LEGEND_WIDTH / 2 -
+                    LEGEND_TEXT_GAP / 2, 
+                    WINDOW_HEIGHT - LEGEND_HEIGHT + 
+                    7 * LEGEND_TEXT_GAP,
+                    LEGEND_TEXT_GAP, LEGEND_HEIGHT / 4);
+            seperator.setBackgroundColor(Color.BLACK);
+            seperator.setForegroundColor(Color.BLACK);
+            window.addShape(seperator);
+            window.moveToFront(seperator);
+
+            TextShape heard = new TextShape(0, 0, "Heard");
+            TextShape likes = new TextShape(0, 0, "Likes");
+            heard.setBackgroundColor(null);
+            likes.setBackgroundColor(null);
+            heard.setX(seperator.getX() - heard.getWidth() - LEGEND_TEXT_GAP / 2);
+            heard.setY(seperator.getY() + seperator.getHeight() / 2 - heard.getHeight() / 2);
+            likes.setX(seperator.getX() + seperator.getWidth() + LEGEND_TEXT_GAP / 2);
+            likes.setY(seperator.getY() + seperator.getHeight() / 2 - likes.getHeight() / 2);
+            window.addShape(heard);
+            window.addShape(likes);
+            window.moveToFront(heard);
+            window.moveToFront(likes);
+        }
         if (legendText != null)
         {
             for (int i = 0 ; i < legendText.length ; i++)
@@ -234,11 +217,23 @@ public class GUIWindow {
         }
     }
     
+    /**
+     * button method for quit
+     * exits program
+     * 
+     * @param b the quit button
+     */
     public void pressedQuit(Button b)
     {
         System.exit(0);
     }
     
+    /**
+     * button method for next
+     * shows the next 9 songs in the songcollection
+     * 
+     * @param b the next button
+     */
     public void pressedNext(Button b)
     {
         if (songcollection.nextNineSongs())
@@ -252,6 +247,12 @@ public class GUIWindow {
         }
     }
     
+    /**
+     * button method for previous
+     * shows the previous 9 songs in the songcollection
+     * 
+     * @param b the previous button
+     */
     public void pressedPrev(Button b)
     {
         if (songcollection.prevNineSongs())
@@ -265,6 +266,13 @@ public class GUIWindow {
         }
     }
 
+    /**
+     * button method for sorting by artist
+     * sorts songcollection by artist and shows the updated
+     * 9 songs
+     * 
+     * @param b the sort artist button
+     */
     public void pressedArtist(Button b)
     {
         songcollection.sort(SongPropertyEnum.ARTIST);
@@ -272,6 +280,13 @@ public class GUIWindow {
         updateGraphics(songcollection.getNineSongsToShow());
     }
     
+    /**
+     * button method for sorting by title
+     * sorts songcollection by title and shows the updated
+     * 9 songs
+     * 
+     * @param b the sort title button
+     */
     public void pressedTitle(Button b)
     {
         songcollection.sort(SongPropertyEnum.TITLE);
@@ -279,6 +294,13 @@ public class GUIWindow {
         updateGraphics(songcollection.getNineSongsToShow());
     }
     
+    /**
+     * button method for sorting by date
+     * sorts songcollection by date and shows the updated
+     * 9 songs
+     * 
+     * @param b the sort date button
+     */
     public void pressedDate(Button b)
     {
         songcollection.sort(SongPropertyEnum.YEAR);
@@ -286,6 +308,13 @@ public class GUIWindow {
         updateGraphics(songcollection.getNineSongsToShow());
     }
     
+    /**
+     * button method for sorting by genre
+     * sorts songcollection by genre and shows the updated
+     * 9 songs
+     * 
+     * @param b the sort genre button
+     */
     public void pressedGenre(Button b)
     {
         songcollection.sort(SongPropertyEnum.GENRE);
@@ -293,6 +322,13 @@ public class GUIWindow {
         updateGraphics(songcollection.getNineSongsToShow());
     }
     
+    /**
+     * button method for representing by hobby
+     * modifies songcollection by artist and shows the updated
+     * 9 songs
+     * 
+     * @param b the represent hobby button
+     */
     public void pressedHobby(Button b)
     {
         songcollection.changeRepresentationEnum(RepresentationEnum.HOBBY);
@@ -301,6 +337,13 @@ public class GUIWindow {
         updateGraphics(songcollection.getNineSongsToShow());
     }
     
+    /**
+     * button method for representing by major
+     * modifies songcollection by major and shows the updated
+     * 9 songs
+     * 
+     * @param b the represent major button
+     */
     public void pressedMajor(Button b)
     {
         songcollection.changeRepresentationEnum(RepresentationEnum.MAJOR);
@@ -309,6 +352,13 @@ public class GUIWindow {
         updateGraphics(songcollection.getNineSongsToShow());
     }
     
+    /**
+     * button method for representing by region
+     * modifies songcollection by region and shows the updated
+     * 9 songs
+     * 
+     * @param b the represent region button
+     */
     public void pressedRegion(Button b)
     {
         songcollection.changeRepresentationEnum(RepresentationEnum.REGION);
@@ -317,6 +367,11 @@ public class GUIWindow {
         updateGraphics(songcollection.getNineSongsToShow());
     }
     
+    /**
+     * updates the graphics, especially the glyphs
+     * 
+     * @param songs 9 songs to show on the screen as a glyph
+     */
     public void updateGraphics(Song[] songs)
     {
         if (currentShown != null)
@@ -336,11 +391,25 @@ public class GUIWindow {
         }
     }
     
+    /**
+     * a private glyph class so it can
+     * represent a song
+     * 
+     * @author Jooyoung Whang (joo918)
+     * @version (11.29.2016)
+     *
+     */
     private class SongGraphic
     {
         private Song song;
         private SongPropertyEnum songInfo;
+        /**
+         * multiplier used to change size of the glyph's bars
+         */
         private static final int sizeMultiplier = 1;
+        /**
+         * each bar's thickness
+         */
         private static final int graphThickness = 30;
 
         private Shape firstHeard;
@@ -355,12 +424,27 @@ public class GUIWindow {
         private TextShape title;
         private TextShape representation;
 
+        /**
+         * default constructor for SongGraphic
+         * creates a SongGraphic object without any parameters,
+         * setting everything to default.
+         */
         public SongGraphic()
         {
             this(new Song("Default", "artist", "0", "genre", null),
                     SongPropertyEnum.ARTIST, 300, 300);
         }
 
+        /**
+         * constructor
+         * creates the SongGraphic object with information from a specific song
+         * can specify by what property to sort by.
+         * 
+         * @param theSong   the song to represent
+         * @param sortedBy  what to be sorted by
+         * @param x x coordinate for the glyph
+         * @param y y coordinate for the glyph
+         */
         public SongGraphic(Song theSong, SongPropertyEnum sortedBy, int x, int y)
         {
             song = theSong;
@@ -428,6 +512,11 @@ public class GUIWindow {
             representation.setY(y - representation.getHeight());
         }
 
+        /**
+         * adds every element of the glyph to the window
+         * 
+         * @param win   window to add to
+         */
         public void addToWindow(Window win)
         {
             win.addShape(divider);
@@ -443,6 +532,11 @@ public class GUIWindow {
             win.addShape(representation);
         }
 
+        /**
+         * removes every element of the glyph from the window
+         * 
+         * @param win   window to remove from
+         */
         public void removeFromWindow(Window win)
         {
             win.removeShape(divider);
