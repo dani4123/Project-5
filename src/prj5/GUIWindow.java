@@ -240,6 +240,14 @@ public class GUIWindow {
         {
             updateGraphics(songcollection.getNineSongsToShow());
             previousButton.enable();
+            if (songcollection.nextNineSongs())
+            {
+                songcollection.prevNineSongs();
+            }
+            else
+            {
+                b.disable();
+            }
         }
         else
         {
@@ -259,6 +267,14 @@ public class GUIWindow {
         {
             updateGraphics(songcollection.getNineSongsToShow());
             nextButton.enable();
+            if (songcollection.prevNineSongs())
+            {
+                songcollection.nextNineSongs();
+            }
+            else
+            {
+                b.disable();
+            }
         }
         else
         {
