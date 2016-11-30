@@ -60,7 +60,7 @@ public class Input {
         }
         else
         {
-            new Input("Input/MusicSurveyData.csv", "Input/SongList.csv");
+            new Input("Input/MusicSurveyData2016F.csv", "Input/SongList2016F.csv");
         }
     }
 
