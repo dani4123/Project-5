@@ -167,8 +167,8 @@ public class Input {
 
         scanner.close();
 
-        outputAs(RepresentationEnum.HOBBY, SongPropertyEnum.GENRE);
-        outputAs(RepresentationEnum.HOBBY, SongPropertyEnum.TITLE);
+        //outputAs(RepresentationEnum.HOBBY, SongPropertyEnum.GENRE);
+        //outputAs(RepresentationEnum.HOBBY, SongPropertyEnum.TITLE);
     }
 
     /**

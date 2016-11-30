@@ -33,16 +33,39 @@ public class GUIWindow {
     private SongPropertyEnum currentProperty;
     private RepresentationEnum currentRepresentation;
 
+    /**
+     * window's width
+     */
     private static final int WINDOW_WIDTH = 1280;
+    /**
+     * window's height
+     */
     private static final int WINDOW_HEIGHT = 720;
+    /**
+     * legend's width
+     */
     private static final int LEGEND_WIDTH = 220;
+    /**
+     * legend's height
+     */
     private static final int LEGEND_HEIGHT = 400;
+    /**
+     * gap between texts in legend
+     */
     private static final int LEGEND_TEXT_GAP = 20;
 
     private TextShape[] legendText;
 
     private SongGraphic[] currentShown;
 
+    /**
+     * constructor for GUIWindow
+     * based on what the filereader initialized,
+     * the constructor sets up the songcollection's data
+     * and initializes the buttons
+     * 
+     * @param filereader    the Input class that has all the information needed
+     */
     public GUIWindow(Input filereader)
     {
         if (filereader != null)
@@ -90,7 +113,7 @@ public class GUIWindow {
         legendBox.setForegroundColor(Color.BLACK);
         window.addShape(legendBox);
 
-        setUpLegend(RepresentationEnum.HOBBY);
+        setUpLegend(currentRepresentation);
 
         TextShape songtitle = new TextShape(0, 0, "Song Title");
         songtitle.setBackgroundColor(null);
@@ -157,43 +180,57 @@ public class GUIWindow {
         representHobby.onClick(this, "pressedHobby");
         representMajor.onClick(this, "pressedMajor");
         representRegion.onClick(this, "pressedRegion");
+        
+        previousButton.disable();
     }
 
+    /**
+     * updates the legend to the appropriate representation
+     * 
+     * @param re    the representation 
+     */
     public void setUpLegend(RepresentationEnum re)
     {
-        TextShape[] returnText = new TextShape[5];
+        if (legendText != null)
+        {
+            for (int i = 0 ; i < legendText.length ; i++)
+            {
+                window.removeShape(legendText[i]);
+            }
+        }
+        legendText = new TextShape[5];
         switch (re)
         {
         case HOBBY:
-            returnText[0] = new TextShape(0, 0, "Hobby Legend");
-            returnText[1] = new TextShape(0, 0, "Read", Color.MAGENTA);
-            returnText[2] = new TextShape(0, 0, "Art", Color.BLUE);
-            returnText[3] = new TextShape(0, 0, "Sports", Color.ORANGE);
-            returnText[4] = new TextShape(0, 0, "Music", Color.GREEN);
+            legendText[0] = new TextShape(0, 0, "Hobby Legend");
+            legendText[1] = new TextShape(0, 0, "Read", Color.MAGENTA);
+            legendText[2] = new TextShape(0, 0, "Art", Color.BLUE);
+            legendText[3] = new TextShape(0, 0, "Sports", Color.ORANGE);
+            legendText[4] = new TextShape(0, 0, "Music", Color.GREEN);
             break;
         case MAJOR:
-            returnText[0] = new TextShape(0, 0, "Major Legend");
-            returnText[1] = new TextShape(0, 0, "Comp Sci", Color.MAGENTA);
-            returnText[2] = new TextShape(0, 0, "Other Eng", Color.BLUE);
-            returnText[3] = new TextShape(0, 0, "Math/CMDA", Color.ORANGE);
-            returnText[4] = new TextShape(0, 0, "Other", Color.GREEN);
+            legendText[0] = new TextShape(0, 0, "Major Legend");
+            legendText[1] = new TextShape(0, 0, "Comp Sci", Color.MAGENTA);
+            legendText[2] = new TextShape(0, 0, "Other Eng", Color.BLUE);
+            legendText[3] = new TextShape(0, 0, "Math/CMDA", Color.ORANGE);
+            legendText[4] = new TextShape(0, 0, "Other", Color.GREEN);
             break;
         case REGION:
-            returnText[0] = new TextShape(0, 0, "Region Legend");
-            returnText[1] = new TextShape(0, 0, "NE", Color.MAGENTA);
-            returnText[2] = new TextShape(0, 0, "SE", Color.BLUE);
-            returnText[3] = new TextShape(0, 0, "Other US", Color.ORANGE);
-            returnText[4] = new TextShape(0, 0, "Outside US", Color.GREEN);
+            legendText[0] = new TextShape(0, 0, "Region Legend");
+            legendText[1] = new TextShape(0, 0, "NE", Color.MAGENTA);
+            legendText[2] = new TextShape(0, 0, "SE", Color.BLUE);
+            legendText[3] = new TextShape(0, 0, "Other US", Color.ORANGE);
+            legendText[4] = new TextShape(0, 0, "Outside US", Color.GREEN);
             break;
         }
         for (int i = 0 ; i < 5 ; i++)
         {
-            returnText[i].setBackgroundColor(null);
-            returnText[i].setX(WINDOW_WIDTH - LEGEND_WIDTH + LEGEND_TEXT_GAP / 2);
-            returnText[i].setY(WINDOW_HEIGHT - LEGEND_HEIGHT + i * LEGEND_TEXT_GAP +
+            legendText[i].setBackgroundColor(null);
+            legendText[i].setX(WINDOW_WIDTH - LEGEND_WIDTH + LEGEND_TEXT_GAP / 2);
+            legendText[i].setY(WINDOW_HEIGHT - LEGEND_HEIGHT + i * LEGEND_TEXT_GAP +
                     LEGEND_TEXT_GAP / 2);
-            window.addShape(returnText[i]);
-            window.moveToFront(returnText[i]);
+            window.addShape(legendText[i]);
+            window.moveToFront(legendText[i]);
         }
     }
     
@@ -260,6 +297,7 @@ public class GUIWindow {
     {
         songcollection.changeRepresentationEnum(RepresentationEnum.HOBBY);
         currentRepresentation = RepresentationEnum.HOBBY;
+        setUpLegend(currentRepresentation);
         updateGraphics(songcollection.getNineSongsToShow());
     }
     
@@ -267,6 +305,7 @@ public class GUIWindow {
     {
         songcollection.changeRepresentationEnum(RepresentationEnum.MAJOR);
         currentRepresentation = RepresentationEnum.MAJOR;
+        setUpLegend(currentRepresentation);
         updateGraphics(songcollection.getNineSongsToShow());
     }
     
@@ -274,6 +313,7 @@ public class GUIWindow {
     {
         songcollection.changeRepresentationEnum(RepresentationEnum.REGION);
         currentRepresentation = RepresentationEnum.REGION;
+        setUpLegend(currentRepresentation);
         updateGraphics(songcollection.getNineSongsToShow());
     }
     
