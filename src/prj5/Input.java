@@ -188,19 +188,13 @@ public class Input {
         while (outputIter.hasNext())
         {
             Song currentOutput = outputIter.next();
-            System.out.println("song title " + currentOutput.getTitle());
-            System.out.println("song artist " + currentOutput.getArtist());
-            System.out.println("song genre " + currentOutput.getGenre());
-            System.out.println("song year " + currentOutput.getYear());
-            System.out.println("heard");
+            System.out.println("Song Title: " + currentOutput.getTitle());
+            System.out.println("Song Artist: " + currentOutput.getArtist());
+            System.out.println("Song Genre: " + currentOutput.getGenre());
+            System.out.println("Song Year: " + currentOutput.getYear());
+            System.out.println("Heard");
             int[] stats = currentOutput.getStatArray();
             int[] outputPerc = new int[8];
-            /*StringBuilder sb = new StringBuilder();
-            for (int i = 0 ; i < 16 ; i++)
-            {
-                sb.append(stats[i] + " ");
-            }
-            System.out.println(sb);*/
             for (int i = 0 ; i < 4 ; i++)
             {
                 if (stats[i * 4 + 1] == 0)
@@ -220,10 +214,10 @@ public class Input {
                     outputPerc[i * 2 + 1] = (int) ((double) stats[i * 4 + 3] / stats[i * 4 + 2] * 100);
                 }
             }
-            System.out.printf("reading%d art%d sports%d music%d\n", outputPerc[0],
+            System.out.printf("reading:%d art:%d sports:%d music:%d\n", outputPerc[0],
                     outputPerc[2], outputPerc[4], outputPerc[6]);
-            System.out.println("likes");
-            System.out.printf("reading%d art%d sports%d music%d\n", outputPerc[1],
+            System.out.println("Likes");
+            System.out.printf("reading:%d art:%d sports:%d music:%d\n", outputPerc[1],
                     outputPerc[3], outputPerc[5], outputPerc[7]);
             System.out.println("");
         }
