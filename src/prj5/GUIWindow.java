@@ -205,6 +205,13 @@ public class GUIWindow {
             legendText[3] = new TextShape(0, 0, "Other US", Color.ORANGE);
             legendText[4] = new TextShape(0, 0, "Outside US", Color.GREEN);
             break;
+        default:
+            legendText[0] = new TextShape(0, 0, "Hobby Legend");
+            legendText[1] = new TextShape(0, 0, "Read", Color.MAGENTA);
+            legendText[2] = new TextShape(0, 0, "Art", Color.BLUE);
+            legendText[3] = new TextShape(0, 0, "Sports", Color.ORANGE);
+            legendText[4] = new TextShape(0, 0, "Music", Color.GREEN);
+            break;
         }
         for (int i = 0 ; i < 5 ; i++)
         {
